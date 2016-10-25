@@ -11,8 +11,8 @@ p{
 }
 #div_content{
     position: relative;
-    top: -900px;
-    left:-400px;
+    top: -90%;
+    left:-10%;
     width: 800px;
     margin: 0 auto;
     /**/
