@@ -22,7 +22,7 @@
 </script>
     
 <div id="sectores">
-    <div class="unidades">
+    <div class="encabezado">
         <img src="<?php echo base_url() . "images/cobertura/unidades/" . $encabezado['uni_imagen'] ?>" />
         <div>
             <h3><?php echo $encabezado['uni_nombre'] ?></h3>
@@ -30,7 +30,7 @@
         </div>
     </div>
     <p class="indicador">Por favor seleccione el sector de estudio para acceder a la información disponible:</p>
-    <div style="margin-left: 10px;">
+    <div>
         <?php foreach ($sectores as $row): ?>
             <div id="<?php echo $row->sec_id?>" class="unidades sectores">
                 <img src="<?php echo base_url()."images/cobertura/sectores/".$row->sec_imagen ?>" />
