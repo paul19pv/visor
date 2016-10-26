@@ -5,6 +5,10 @@ class CobVeg extends CI_Controller{
         parent::__construct();
         $this->load->model('CobVeg_model', 'cobveg');
     }
+    public function view_unidades() {
+     $data['unidades']= $this->cobveg->get_unidades();
+        $this->load->view('cobveg/unidades.php',$data);   
+    }
     
     public function view_sectores() {
         $uni_id= $this->input->post('id');

@@ -7,7 +7,11 @@ class CobVeg_model extends CI_Model {
     function __construct() {
         parent::__construct();
     }
-    
+    public function get_unidades() {
+        $query = $this->db->get('unidad');
+        //var_dump($this->db->last_query());
+        return $query->result();
+    }
     public function get_unidad($uni_id) {
         $this->db->where('uni_id',$uni_id);
         $query = $this->db->get('unidad');

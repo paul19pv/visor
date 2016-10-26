@@ -12,11 +12,11 @@ for (var i = 0; i < pairs.length; i++) {
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -0.2, lng: -78.35},
-        zoom: 9,
+        center: {lat: -0.2, lng: -78.85},
+        zoom: 10,
         mapTypeId: google.maps.MapTypeId.TERRAIN
     });
-    //loadWMS(map, "http://geoserver.infoagua-guayllabamba.ec:8080/geoserver/wms?", customParams);
+    loadWMS(map, "http://infoagua-guayllabamba.ec:8080/geoserver/wms?", customParams);
    
 }
 

@@ -103,7 +103,7 @@
                             <div class="form-group">
                                 <label>Especies</label>
                                 <div class="col-lg-5">
-                                    
+
                                     <textarea rows="1" class="form-control"><?php echo $plantacion->pla_especies; ?></textarea>
                                 </div>
                                 <label>Num. Plantas</label>
@@ -130,7 +130,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    
+
                                 </div>
                                 <label>Área plantada</label>
                                 <div class="col-lg-2">
@@ -141,23 +141,212 @@
                                     <input class="form-control" value="<?php echo $plantacion->pla_kilometros; ?>" />
                                 </div>
                                 <label>Km</label>
-                                
+
                             </div>
                         </form>
                     </div>
                     <p class="indicador">Interpretación del Estado del Sector</p>
                     <div class="parrafo">
-                        <p><?php echo $plantacion->pla_texto;?></p>
+                        <p><?php echo $plantacion->pla_texto; ?></p>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-2" style="margin: auto; float: none;">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Ver Mapa
+                                </label>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
                 <div id="tab_actividad-3">
-                    <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-                    <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+                    <p class="parrafo">Una vez realizada la restauración activa se espera un período de al menos dos años de adaptación de las plántulas a las condiciones climáticas y de tipo de suelo, para realizar una limpieza o un coronamiento en un radio de 50cm alrededor de las plantas, reducir la competencia y fomentar su crecimiento. Durante el transcurso del tiempo, dependiendo del sitio y estado de la plantación se programa podas y raleos para disminuir la densidad de los árboles y propiciar el ingreso natural de nuevas especies.</p>
+                    <div class="div_tabla" style="width:80px; ">
+                        <div style="float: left;">
+                            <table>
+                                <thead>
+                                    <tr><th>Coronamiento</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Limpieza<br>Dimensiones (cm)</td></tr>
+                                    <tr><td>r 50cm</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <p class="indicador">El estado de mantenimiento del sector seleccionado es el siguiente</p>
+                    <div style="overflow: hidden" class="parrafo">
+                        <form>
+                            <div class="form-group">
+                                <label>Dimensiones</label>
+                                <div class="col-lg-2">
+                                    <input class="form-control" value="<?php echo ''; ?>" />
+                                </div>
+                                <label>Podas</label>
+                                <div class="col-lg-3">
+                                    <input class="form-control" value="<?php echo ''; ?>" />
+                                </div>
+                                <label>Raleos</label>
+                                <div class="col-lg-2">
+                                    <input class="form-control" value="<?php echo ''; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Replante Especies</label>
+                                <div class="col-lg-5">
+
+                                    <textarea rows="1" class="form-control"><?php ''; ?></textarea>
+                                </div>
+                                <label>Num. Plantas</label>
+                                <div class="col-lg-3">
+                                    <input class="form-control" value="<?php ''; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-4">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">Fertilización</th>
+                                            </tr>
+                                            <tr>
+                                                <td>Producto</td>
+                                                <td>Peso(gr/planta)</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Área plantada</label>
+                                    <div class="col-lg-2">
+                                        <input class="form-control" value="<?php echo ''; ?>" />
+                                    </div>
+                                    <label>Ha</label>
+                                    <div class="col-lg-2">
+                                        <input class="form-control" value="<?php echo ''; ?>" />
+                                    </div>
+                                    <label>Km</label>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Área Mantenida</label>
+                                    <div class="col-lg-2">
+                                        <input class="form-control" value="<?php echo ''; ?>" />
+                                    </div>
+                                    <label>Ha</label>
+                                    <div class="col-lg-2">
+                                        <input class="form-control" value="<?php echo ''; ?>" />
+                                    </div>
+                                    <label>Km</label>
+
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+                    <p class="indicador">Interpretación del Estado del Sector</p>
+                    <div class="parrafo">
+                        <p><?php echo ''; ?></p>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-2" style="margin: auto; float: none;">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Ver Mapa
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="tab_actividad-4">
-                    <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-                    <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+                    <p class="parrafo">Esta sección nos permite visualizar cómo avanzan los procesos de restauración activa en el ecosistema páramo a través de la actividad plantación, mediante coberturas precargadas de los años 2008-2011, 2012, 2103, 2014 y 2015</p>
+                    <p class="indicador">A continuación puede encontrar las actividadesy resultados por subactividad de la fase seleccionada:</p>
+                    <h2>Plantación</h2>
+                    <div class="parrafo padding-10">
+                        <p class="indicador">Seleccione las coberturas a presentar</p>
+
+                        <div class="form-group">
+                            <div class="col-lg-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> Todos los años
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> 2005-2011
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> 2012
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> 2013
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> 2014
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> 2015
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="indicador">Escoja la velocidad de visualización</p>
+                        <div class="form-group">
+                            <div class="col-lg-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="radio"> Rápido
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="radio"> Medio
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="radio"> Lento
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
                 </div>
             </div>
         </div>
