@@ -7,14 +7,14 @@
 
 
 <div id="paramo">
-    <div class="encabezado">
-        <img src="<?php echo base_url() . "images/cobertura/sectores/" . $sector->sec_imagen ?>" />
-        <div>
+    <div class="w3-container w3-light-grey w3-round">
+        <img src="<?php echo base_url() . "images/cobertura/sectores/" . $sector->sec_imagen ?>" class="w3-left w3-margin-top w3-margin-bottom w3-margin-right"/>
+        <div class="w3-rest">
             <h3><?php echo $sector->sec_nombre ?></h3>
             <p><?php echo $sector->sec_texto ?></p>
         </div>
     </div>
-    <p class="indicador">Por favor seleccione la fase de recuperación de interés para acceder a los resultados del sector:</p>
+    <p class="w3-panel w3-text-green"><strong>Por favor seleccione la fase de recuperación de interés para acceder a los resultados del sector:</strong></p>
     <div id="tab_fase">
         <ul>
             <li><a href="#tab_fase-1">Activa</a></li>
@@ -22,7 +22,7 @@
             <li><a href="#tab_fase-3">Comunitaria</a></li>
         </ul>
         <div id="tab_fase-1" style="padding: 10px 0px;">
-            <div class="parrafo">
+            <div class="w3-container w3-light-grey w3-round">
                 <p>Las actividades de la Recuperación Activa consideradas son Plantación y Mantenimiento </p>
             </div>
             <div id="tab_actividad">
@@ -33,120 +33,172 @@
                     <li><a href="#tab_actividad-4">Simulación</a></li>
                 </ul>
                 <div id="tab_actividad-1">
-                    <img src="<?php echo base_url() ?>images/cobertura/activa.png" />
-                    <p>Debido a que el incremento de las actividades humanas productivas en los Páramos está alternado significativamente su funcionalidad natural especialmente la hidrológica, el FONAG implementa actividades como la introducción de plántulas de especies forestales, arbustivas y herbáceas nativas alto andinas adaptadas al medio que aceleren la recuperación del ecosistema páramo, cuando la restauración pasiva no funciona o es demasiado lenta.</p>
+                    <img src="<?php echo base_url() ?>images/cobertura/activa.png" class="w3-left w3-margin-right" />
+                    <p class="w3-container">Debido a que el incremento de las actividades humanas productivas en los Páramos está alternado significativamente su funcionalidad natural especialmente la hidrológica, el FONAG implementa actividades como la introducción de plántulas de especies forestales, arbustivas y herbáceas nativas alto andinas adaptadas al medio que aceleren la recuperación del ecosistema páramo, cuando la restauración pasiva no funciona o es demasiado lenta.</p>
                 </div>
                 <div id="tab_actividad-2">
-                    <p class="parrafo">Este tipo de recuperación se ejecuta cuando el ecosistema páramo es fuertemente degradado, se lo realiza con la utilización de especies nativas principalmente Polylepis sp. (Yagual) Chuquiragua sp. Gynoxys sp (Piquil), Loricaria thuyoides (Jata), Hypericum sp (Romerillo de páramo) entre otras, aplicando metodologías como tres bolillo, tipo célula y en marco real, que dependen del grado de degradación, pendiente, viento y tipo de suelo del sector.</p>
-                    <div class="div_tabla" style="width:360px; ">
-                        <div style="float: left;">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">Marcado</th>
-                                        <th>Oyado</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Pendiente</td>
-                                        <td>Método</td>
-                                        <td>Dimensiones</td>
-                                    </tr> 
-                                    <tr>
-                                        <td><15%</td>
-                                        <td>Marco Real</td>
-                                        <td rowspan="3">30x30x30</td>
-                                    </tr>
-                                    <tr>
-                                        <td>>15%</td>
-                                        <td>Tres bolillo</td>
-                                    </tr>
-                                    <tr>
-                                        <td>No aplica</td>
-                                        <td>Al azar</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <p class="w3-container w3-light-grey w3-round">Este tipo de recuperación se ejecuta cuando el ecosistema páramo es fuertemente degradado, se lo realiza con la utilización de especies nativas principalmente Polylepis sp. (Yagual) Chuquiragua sp. Gynoxys sp (Piquil), Loricaria thuyoides (Jata), Hypericum sp (Romerillo de páramo) entre otras, aplicando metodologías como tres bolillo, tipo célula y en marco real, que dependen del grado de degradación, pendiente, viento y tipo de suelo del sector.</p>
+                    <div class="w3-panel">
+                        <div class="w3-display-container w3-col s6" style="height:150px;">
+                            <div class="w3-display-topmiddle">
+                                <table class="w3-table-all w3-centered">
+                                    <thead>
+                                        <tr class="w3-green">
+                                            <th colspan="2">Marcado</th>
+                                            <th>Oyado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Pendiente</td>
+                                            <td>Método</td>
+                                            <td>Dimensiones</td>
+                                        </tr> 
+                                        <tr>
+                                            <td><15%</td>
+                                            <td>Marco Real</td>
+                                            <td rowspan="3">30x30x30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>>15%</td>
+                                            <td>Tres bolillo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>No aplica</td>
+                                            <td>Al azar</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div style="float: left;margin-left: 20px;">
-                            <table>
-                                <thead>
-                                    <tr><th>Fertilización</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Potasio</td></tr>
-                                    <tr><td>Boro</td></tr>
-                                    <tr><td>Nitrógeno</td></tr>
-                                    <tr><td>Fósforo</td></tr>
-                                </tbody>
-                            </table>
+
+                        <div class="w3-display-container w3-col s6" style="height:150px;">
+                            <div class="w3-display-topmiddle">
+                                <table class="w3-table-all w3-centered">
+                                    <thead>
+                                        <tr class="w3-green"><th>Fertilización</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>Potasio</td></tr>
+                                        <tr><td>Boro</td></tr>
+                                        <tr><td>Nitrógeno</td></tr>
+                                        <tr><td>Fósforo</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
                     </div>
-                    <p class="indicador">El estado de recuperación del sector seleccionado es el siguiente</p>
-                    <div style="overflow: hidden" class="parrafo">
+                    <p class="w3-panel w3-text-green">El estado de recuperación del sector seleccionado es el siguiente</p>
+                    <div class="w3-panel w3-light-grey w3-round">
                         <form>
-                            <div class="form-group">
-                                <label>Pendiente</label>
-                                <div class="col-lg-2">
-                                    <input class="form-control" value="<?php echo $plantacion->pla_pendiente; ?>" />
+                            <div class="w3-row w3-padding-4">
+                                <div class="w3-col s2">
+                                    <label class="w3-label w3-text-black">Pendiente</label>
                                 </div>
-                                <label>Método</label>
-                                <div class="col-lg-3">
-                                    <input class="form-control" value="<?php echo $plantacion->pla_metodo; ?>" />
+                                <div class="w3-col s2">
+                                    <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_pendiente; ?>" />
                                 </div>
-                                <label>Dimensiones</label>
-                                <div class="col-lg-2">
-                                    <input class="form-control" value="<?php echo $plantacion->pla_hoyado; ?>" />
+                                <div class="w3-col s2">
+                                    <label class="w3-label w3-text-black">Método</label>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Especies</label>
-                                <div class="col-lg-5">
-
-                                    <textarea rows="1" class="form-control"><?php echo $plantacion->pla_especies; ?></textarea>
+                                <div class="w3-col s2">
+                                    <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_metodo; ?>" />
                                 </div>
-                                <label>Num. Plantas</label>
-                                <div class="col-lg-3">
-                                    <input class="form-control" value="<?php echo $plantacion->pla_numero; ?>" />
+                                <div class="w3-col s2">
+                                    <label class="w3-label w3-text-black">Dimensiones</label>
+                                </div>
+                                <div class="w3-col s2">
+                                    <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_hoyado; ?>" />
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-lg-4">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2">Fertilización</th>
-                                            </tr>
-                                            <tr>
-                                                <td>Producto</td>
-                                                <td>Peso(gr/planta)</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>&nbsp;</td>
-                                                <td>&nbsp;</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                            <div class="w3-row w3-padding-4">
+                                <div class="w3-col s2">
+                                    <label class="w3-label w3-text-black">Especies</label>
+                                </div>
+                                <div class="w3-col s6">
+                                    <textarea rows="1" class="w3-input w3-border w3-round w3-padding-4"><?php echo $plantacion->pla_especies; ?></textarea>
+                                </div>
+                                <div class="w3-col s2">
+                                    <label class="w3-label w3-text-black">Num. Plantas</label>
+                                </div>
+                                <div class="w3-col s2">
+                                    <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_numero; ?>" />
+                                </div>
+                            </div>
+                            <div class="w3-row w3-padding-4">
+                                <div class="w3-col s6">
+                                    <div class="w3-display-container" style="height:180px;">
+                                        <div class="w3-padding w3-display-topmiddle">
+                                            <table class="w3-table-all w3-centered">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="w3-green" colspan="2">Fertilización</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Producto</td>
+                                                        <td>Peso(gr/planta)</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
 
                                 </div>
-                                <label>Área plantada</label>
-                                <div class="col-lg-2">
-                                    <input class="form-control" value="<?php echo $plantacion->pla_hectareas; ?>" />
+                                <div class="w3-col s2">
+                                    <label class="w3-label w3-text-black">Área plantada</label>
                                 </div>
-                                <label>Ha</label>
-                                <div class="col-lg-2">
-                                    <input class="form-control" value="<?php echo $plantacion->pla_kilometros; ?>" />
+
+                                <div class="w3-col s4">
+                                    <div class="w3-row">
+                                        <div class="w3-col s6">
+                                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_hectareas; ?>" />
+                                        </div>
+                                        <div class="w3-col s6">
+                                            <label class="w3-label w3-text-black">Ha</label>
+                                        </div>
+                                    </div>
+                                    <div class="w3-row">
+                                        <div class="w3-col s6">
+                                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_kilometros; ?>" />
+                                        </div>
+                                        <div class="w3-col s6">
+                                            <label class="w3-label w3-text-black">Km</label>
+                                        </div>
+                                    </div>
+
+
                                 </div>
-                                <label>Km</label>
 
                             </div>
                         </form>
                     </div>
-                    <p class="indicador">Interpretación del Estado del Sector</p>
-                    <div class="parrafo">
+                    <p class="w3-panel w3-text-green">Interpretación del Estado del Sector</p>
+                    <div class="w3-container w3-light-grey w3-round">
                         <p><?php echo $plantacion->pla_texto; ?></p>
                     </div>
                     <div class="form-group">
