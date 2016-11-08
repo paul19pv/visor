@@ -15,7 +15,7 @@
     </head>
     <body>
         <?php echo $mapa;?>
-        <div id="div_content" class="w3-col s5 w3-display-topleft w3-margin">
+        <div id="div_content" class="w3-col s5 w3-display-topleft w3-margin w3-padding-32">
             <?php echo $content?>
         </div>
         

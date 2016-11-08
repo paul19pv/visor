@@ -171,7 +171,7 @@
                                 <div class="w3-col s4">
                                     <div class="w3-row-padding">
                                         <div class="w3-col s6">
-                                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_hectareas; ?>" />
+                                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_area; ?>" />
                                         </div>
                                         <div class="w3-col s6">
                                             <label class="w3-label w3-text-black">Ha</label>
@@ -179,7 +179,7 @@
                                     </div>
                                     <div class="w3-row-padding">
                                         <div class="w3-col s6">
-                                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_kilometros; ?>" />
+                                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo round($plantacion->pla_area/100,2); ?>" />
                                         </div>
                                         <div class="w3-col s6">
                                             <label class="w3-label w3-text-black">Km</label>
@@ -377,12 +377,11 @@
                 <div id="tab_actividad-4">
                     <p class="w3-container w3-light-grey w3-round w3-padding-4">Esta sección nos permite visualizar cómo avanzan los procesos de restauración activa en el ecosistema páramo a través de la actividad plantación, mediante coberturas precargadas de los años 2008-2011, 2012, 2103, 2014 y 2015</p>
                     <p class="w3-text-green w3-padding-8"><strong>A continuación puede encontrar las actividadesy resultados por subactividad de la fase seleccionada:</strong></p>
-                    <div class="w3-container">
-                        <!--<p class="w3-text-green"><strong>Plantación</strong></p>-->
-                        <h6 class="w3-text-green">Plantación</h6>
+                    <div class="w3-container w3-light-grey w3-padding-4 w3-border-left w3-border-top w3-border-right">
+                        <h6 class="w3-text-green w3-margin-0">Plantación</h6>
                     </div>
                     <form class="w3-border">
-                        <div class="w3-container w3-round w3-light-grey">
+                        <div class="w3-container">
                             <p class="w3-text-green w3-padding-8"><strong>Seleccione las coberturas a presentar</strong></p>
                             <div class="w3-row w3-padding-8">
                                 <div class="w3-col s2">

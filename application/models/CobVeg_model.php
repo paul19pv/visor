@@ -32,8 +32,8 @@ class CobVeg_model extends CI_Model {
         
     }
     public function get_plantacion($sec_id) {
-        $this->db->where('rec_sector',$sec_id);
-        $query = $this->db->get('view_plantacion');
+        $this->db->where('pla_sector',$sec_id);
+        $query = $this->db->get('plantacion');
         //var_dump($this->db->last_query());
         return $query->row();
     }
