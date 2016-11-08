@@ -24,7 +24,7 @@
     <p>El módulo de Cobertura Vegetal se enfoca en sectores específicos de las Cuencas Hídricas Guayllabamba, Alto, Medio, San Pedro, Pita y Pisque, y Napo, Oyacachi, Chapli Grande, Papallacta y Antisana, que poseen ecosistemas de páramo y bosque altoandino que son importantes zonas de recarga hídrico. Estos sectores albergan una gran diversidad biológica, pero a su vez presentan una gran vulnerabilidad ante cualquier presión, ya sea debida a agentes naturales o a una inadecuada interacción del ser humano con el medio.</p>
 </div>
 
-<p class="w3-panel w3-text-green">
+<p class="w3-text-green w3-padding-8">
     <strong>A continuación para ver información disponible y resultados, por favor seleccione una unidad hídricas</strong>
 </p>
 <div class="w3-container w3-light-grey w3-round w3-padding-4">

@@ -14,7 +14,7 @@
             <p><?php echo $sector->sec_texto ?></p>
         </div>
     </div>
-    <p class="w3-panel w3-text-green"><strong>Por favor seleccione la fase de recuperación de interés para acceder a los resultados del sector:</strong></p>
+    <p class="w3-text-green w3-padding-8"><strong>Por favor seleccione la fase de recuperación de interés para acceder a los resultados del sector:</strong></p>
     <div id="tab_fase">
         <ul>
             <li><a href="#tab_fase-1">Activa</a></li>
@@ -22,7 +22,7 @@
             <li><a href="#tab_fase-3">Comunitaria</a></li>
         </ul>
         <div id="tab_fase-1" style="padding: 10px 0px;">
-            <div class="w3-container w3-light-grey w3-round">
+            <div class="w3-panel w3-round">
                 <p>Las actividades de la Recuperación Activa consideradas son Plantación y Mantenimiento </p>
             </div>
             <div id="tab_actividad">
@@ -37,7 +37,7 @@
                     <p class="w3-container">Debido a que el incremento de las actividades humanas productivas en los Páramos está alternado significativamente su funcionalidad natural especialmente la hidrológica, el FONAG implementa actividades como la introducción de plántulas de especies forestales, arbustivas y herbáceas nativas alto andinas adaptadas al medio que aceleren la recuperación del ecosistema páramo, cuando la restauración pasiva no funciona o es demasiado lenta.</p>
                 </div>
                 <div id="tab_actividad-2">
-                    <p class="w3-container w3-light-grey w3-round">Este tipo de recuperación se ejecuta cuando el ecosistema páramo es fuertemente degradado, se lo realiza con la utilización de especies nativas principalmente Polylepis sp. (Yagual) Chuquiragua sp. Gynoxys sp (Piquil), Loricaria thuyoides (Jata), Hypericum sp (Romerillo de páramo) entre otras, aplicando metodologías como tres bolillo, tipo célula y en marco real, que dependen del grado de degradación, pendiente, viento y tipo de suelo del sector.</p>
+                    <p class="w3-container w3-light-grey w3-round w3-padding-4">Este tipo de recuperación se ejecuta cuando el ecosistema páramo es fuertemente degradado, se lo realiza con la utilización de especies nativas principalmente Polylepis sp. (Yagual) Chuquiragua sp. Gynoxys sp (Piquil), Loricaria thuyoides (Jata), Hypericum sp (Romerillo de páramo) entre otras, aplicando metodologías como tres bolillo, tipo célula y en marco real, que dependen del grado de degradación, pendiente, viento y tipo de suelo del sector.</p>
                     <div class="w3-panel">
                         <div class="w3-display-container w3-col s6" style="height:150px;">
                             <div class="w3-display-topmiddle">
@@ -71,7 +71,6 @@
                                 </table>
                             </div>
                         </div>
-
                         <div class="w3-display-container w3-col s6" style="height:150px;">
                             <div class="w3-display-topmiddle">
                                 <table class="w3-table-all w3-centered">
@@ -86,47 +85,188 @@
                                     </tbody>
                                 </table>
                             </div>
-
                         </div>
                     </div>
-                    <p class="w3-panel w3-text-green">El estado de recuperación del sector seleccionado es el siguiente</p>
-                    <div class="w3-panel w3-light-grey w3-round">
+                    <p class="w3-text-green w3-padding-8"><strong>El estado de recuperación del sector seleccionado es el siguiente</strong></p>
+                    <div class="w3-light-grey w3-round w3-padding-8">
                         <form>
-                            <div class="w3-row w3-padding-4">
+                            <div class="w3-row-padding w3-padding-8">
                                 <div class="w3-col s2">
-                                    <label class="w3-label w3-text-black">Pendiente</label>
+                                    <label class="w3-label w3-text-black"><b>Pendiente</b></label>
                                 </div>
                                 <div class="w3-col s2">
                                     <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_pendiente; ?>" />
                                 </div>
                                 <div class="w3-col s2">
-                                    <label class="w3-label w3-text-black">Método</label>
+                                    <label class="w3-label w3-text-black"><b>Método</b></label>
                                 </div>
                                 <div class="w3-col s2">
                                     <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_metodo; ?>" />
                                 </div>
                                 <div class="w3-col s2">
-                                    <label class="w3-label w3-text-black">Dimensiones</label>
+                                    <label class="w3-label w3-text-black"><b>Dimensiones</b></label>
                                 </div>
                                 <div class="w3-col s2">
                                     <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_hoyado; ?>" />
                                 </div>
                             </div>
-                            <div class="w3-row w3-padding-4">
+                            <div class="w3-row-padding w3-padding-8">
                                 <div class="w3-col s2">
-                                    <label class="w3-label w3-text-black">Especies</label>
+                                    <label class="w3-label w3-text-black"><b>Especies</b></label>
                                 </div>
                                 <div class="w3-col s6">
-                                    <textarea rows="1" class="w3-input w3-border w3-round w3-padding-4"><?php echo $plantacion->pla_especies; ?></textarea>
+                                    <textarea rows="2" class="w3-input w3-border w3-round w3-padding-4"><?php echo $plantacion->pla_especies; ?></textarea>
                                 </div>
                                 <div class="w3-col s2">
-                                    <label class="w3-label w3-text-black">Num. Plantas</label>
+                                    <label class="w3-label w3-text-black"><b>Num.<br>Plantas</b></label>
                                 </div>
                                 <div class="w3-col s2">
                                     <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_numero; ?>" />
                                 </div>
                             </div>
-                            <div class="w3-row w3-padding-4">
+                            <div class="w3-row-padding w3-padding-8">
+                                <div class="w3-col s6">
+                                    <div class="w3-display-container" style="height:180px;">
+                                        <div class="w3-padding w3-display-topmiddle">
+                                            <table class="w3-table-all w3-centered">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="w3-green" colspan="2">Fertilización</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Producto</td>
+                                                        <td>Peso(gr/planta)</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w3-col s2">
+                                    <label class="w3-label w3-text-black"><b>Área<br>plantada</b></label>
+                                </div>
+
+                                <div class="w3-col s4">
+                                    <div class="w3-row-padding">
+                                        <div class="w3-col s6">
+                                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_hectareas; ?>" />
+                                        </div>
+                                        <div class="w3-col s6">
+                                            <label class="w3-label w3-text-black">Ha</label>
+                                        </div>
+                                    </div>
+                                    <div class="w3-row-padding">
+                                        <div class="w3-col s6">
+                                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_kilometros; ?>" />
+                                        </div>
+                                        <div class="w3-col s6">
+                                            <label class="w3-label w3-text-black">Km</label>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                    <p class="w3-text-green w3-padding-8"><strong>Interpretación del Estado del Sector</strong></p>
+                    <div class="w3-container w3-light-grey w3-round w3-padding-4">
+                        <p><?php echo $plantacion->pla_texto; ?></p>
+                    </div>
+                    <div class="w3-display-container" style="height:40px;">
+                        <div class="w3-padding w3-display-topmiddle">
+                            <form>
+                                <div class="w3-row">
+                                    <input class="w3-check" type="checkbox">
+                                    <label class="w3-validate">Ver mapa</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="tab_actividad-3">
+                    <p class="w3-container w3-light-grey w3-round w3-padding-4">Una vez realizada la restauración activa se espera un período de al menos dos años de adaptación de las plántulas a las condiciones climáticas y de tipo de suelo, para realizar una limpieza o un coronamiento en un radio de 50cm alrededor de las plantas, reducir la competencia y fomentar su crecimiento. Durante el transcurso del tiempo, dependiendo del sitio y estado de la plantación se programa podas y raleos para disminuir la densidad de los árboles y propiciar el ingreso natural de nuevas especies.</p>
+                    <div class="w3-panel">
+                        <div class="w3-display-container w3-col s12" style="height:90px;">
+                            <div class="w3-display-topmiddle">
+                                <table class="w3-table-all w3-centered">
+                                    <thead>
+                                        <tr class="w3-green">
+                                            <th>Coronamiento</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>Limpieza<br>Dimensiones (cm)</td></tr>
+                                        <tr><td>r 50cm</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="w3-text-green w3-padding-8"><strong> El estado de mantenimiento del sector seleccionado es el siguiente</strong></p>
+
+                    <div class="w3-light-grey w3-round w3-padding-8">
+                        <form>
+                            <div class="w3-row-padding w3-padding-8">
+                                <div class="w3-col s2">
+                                    <label class="w3-label w3-text-black"><b>Dimensiones</b></label>
+                                </div>
+                                <div class="w3-col s2">
+                                    <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                                </div>
+                                <div class="w3-col s2">
+                                    <label class="w3-label w3-text-black"><b>Podas</b></label>
+                                </div>
+                                <div class="w3-col s2">
+                                    <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                                </div>
+                                <div class="w3-col s2">
+                                    <label class="w3-label w3-text-black"><b>Raleos</b></label>
+                                </div>
+                                <div class="w3-col s2">
+                                    <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                                </div>
+                            </div>
+                            <div class="w3-row-padding w3-padding-8">
+                                <div class="w3-col s2">
+                                    <label class="w3-label w3-text-black"><b>Replante<br>Especies</b></label>
+                                </div>
+                                <div class="w3-col s6">
+                                    <textarea rows="2" class="w3-input w3-border w3-round w3-padding-4"><?php echo ''; ?></textarea>
+                                </div>
+                                <div class="w3-col s2">
+                                    <label class="w3-label w3-text-black"><b>Num.<br>Plantas</b></label>
+                                </div>
+                                <div class="w3-col s2">
+                                    <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                                </div>
+                            </div>
+                            <div class="w3-row-padding w3-padding-8">
                                 <div class="w3-col s6">
                                     <div class="w3-display-container" style="height:180px;">
                                         <div class="w3-padding w3-display-topmiddle">
@@ -170,23 +310,44 @@
 
                                 </div>
                                 <div class="w3-col s2">
-                                    <label class="w3-label w3-text-black">Área plantada</label>
+                                    <label class="w3-label w3-text-black"><b>Área<br>plantada</b></label>
                                 </div>
 
                                 <div class="w3-col s4">
-                                    <div class="w3-row">
-                                        <div class="w3-col s6">
-                                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_hectareas; ?>" />
+                                    <div class="w3-row w3-padding-8">
+                                        <div class="w3-col s4">
+                                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
                                         </div>
-                                        <div class="w3-col s6">
+                                        <div class="w3-col s2">
                                             <label class="w3-label w3-text-black">Ha</label>
                                         </div>
-                                    </div>
-                                    <div class="w3-row">
-                                        <div class="w3-col s6">
-                                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_kilometros; ?>" />
+                                        <div class="w3-col s4">
+                                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
                                         </div>
-                                        <div class="w3-col s6">
+                                        <div class="w3-col s2">
+                                            <label class="w3-label w3-text-black">Km</label>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="w3-col s2">
+                                    <label class="w3-label w3-text-black"><b>Área<br>Mantenida</b></label>
+                                </div>
+
+                                <div class="w3-col s4">
+                                    <div class="w3-row w3-padding-8">
+                                        <div class="w3-col s4">
+                                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                                        </div>
+                                        <div class="w3-col s2">
+                                            <label class="w3-label w3-text-black">Ha</label>
+                                        </div>
+                                        <div class="w3-col s4">
+                                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                                        </div>
+                                        <div class="w3-col s2">
                                             <label class="w3-label w3-text-black">Km</label>
                                         </div>
                                     </div>
@@ -197,208 +358,84 @@
                             </div>
                         </form>
                     </div>
-                    <p class="w3-panel w3-text-green">Interpretación del Estado del Sector</p>
-                    <div class="w3-container w3-light-grey w3-round">
-                        <p><?php echo $plantacion->pla_texto; ?></p>
+
+                    <p class="w3-text-green w3-padding-8"><strong>Interpretación del Estado del Sector</strong></p>
+                    <div class="w3-container w3-light-grey w3-round w3-padding-4">
+                        <p><?php echo ''; ?><br></p>
                     </div>
-                    <div class="form-group">
-                        <div class="col-lg-2" style="margin: auto; float: none;">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Ver Mapa
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div id="tab_actividad-3">
-                    <p class="parrafo">Una vez realizada la restauración activa se espera un período de al menos dos años de adaptación de las plántulas a las condiciones climáticas y de tipo de suelo, para realizar una limpieza o un coronamiento en un radio de 50cm alrededor de las plantas, reducir la competencia y fomentar su crecimiento. Durante el transcurso del tiempo, dependiendo del sitio y estado de la plantación se programa podas y raleos para disminuir la densidad de los árboles y propiciar el ingreso natural de nuevas especies.</p>
-                    <div class="div_tabla" style="width:80px; ">
-                        <div style="float: left;">
-                            <table>
-                                <thead>
-                                    <tr><th>Coronamiento</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Limpieza<br>Dimensiones (cm)</td></tr>
-                                    <tr><td>r 50cm</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <p class="indicador">El estado de mantenimiento del sector seleccionado es el siguiente</p>
-                    <div style="overflow: hidden" class="parrafo">
-                        <form>
-                            <div class="form-group">
-                                <label>Dimensiones</label>
-                                <div class="col-lg-2">
-                                    <input class="form-control" value="<?php echo ''; ?>" />
+                    <div class="w3-display-container" style="height:40px;">
+                        <div class="w3-padding w3-display-topmiddle">
+                            <form>
+                                <div class="w3-row">
+                                    <input class="w3-check" type="checkbox">
+                                    <label class="w3-validate">Ver mapa</label>
                                 </div>
-                                <label>Podas</label>
-                                <div class="col-lg-3">
-                                    <input class="form-control" value="<?php echo ''; ?>" />
-                                </div>
-                                <label>Raleos</label>
-                                <div class="col-lg-2">
-                                    <input class="form-control" value="<?php echo ''; ?>" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Replante Especies</label>
-                                <div class="col-lg-5">
-
-                                    <textarea rows="1" class="form-control"><?php ''; ?></textarea>
-                                </div>
-                                <label>Num. Plantas</label>
-                                <div class="col-lg-3">
-                                    <input class="form-control" value="<?php ''; ?>" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-lg-4">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2">Fertilización</th>
-                                            </tr>
-                                            <tr>
-                                                <td>Producto</td>
-                                                <td>Peso(gr/planta)</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>&nbsp;</td>
-                                                <td>&nbsp;</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                                <div class="form-group">
-                                    <label>Área plantada</label>
-                                    <div class="col-lg-2">
-                                        <input class="form-control" value="<?php echo ''; ?>" />
-                                    </div>
-                                    <label>Ha</label>
-                                    <div class="col-lg-2">
-                                        <input class="form-control" value="<?php echo ''; ?>" />
-                                    </div>
-                                    <label>Km</label>
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Área Mantenida</label>
-                                    <div class="col-lg-2">
-                                        <input class="form-control" value="<?php echo ''; ?>" />
-                                    </div>
-                                    <label>Ha</label>
-                                    <div class="col-lg-2">
-                                        <input class="form-control" value="<?php echo ''; ?>" />
-                                    </div>
-                                    <label>Km</label>
-
-                                </div>
-
-
-                            </div>
-                        </form>
-                    </div>
-                    <p class="indicador">Interpretación del Estado del Sector</p>
-                    <div class="parrafo">
-                        <p><?php echo ''; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-2" style="margin: auto; float: none;">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Ver Mapa
-                                </label>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <div id="tab_actividad-4">
-                    <p class="parrafo">Esta sección nos permite visualizar cómo avanzan los procesos de restauración activa en el ecosistema páramo a través de la actividad plantación, mediante coberturas precargadas de los años 2008-2011, 2012, 2103, 2014 y 2015</p>
-                    <p class="indicador">A continuación puede encontrar las actividadesy resultados por subactividad de la fase seleccionada:</p>
-                    <h2>Plantación</h2>
-                    <div class="parrafo padding-10">
-                        <p class="indicador">Seleccione las coberturas a presentar</p>
-
-                        <div class="form-group">
-                            <div class="col-lg-2">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Todos los años
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> 2005-2011
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> 2012
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> 2013
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> 2014
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> 2015
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="indicador">Escoja la velocidad de visualización</p>
-                        <div class="form-group">
-                            <div class="col-lg-2">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="radio"> Rápido
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="radio"> Medio
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="radio"> Lento
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
+                    <p class="w3-container w3-light-grey w3-round w3-padding-4">Esta sección nos permite visualizar cómo avanzan los procesos de restauración activa en el ecosistema páramo a través de la actividad plantación, mediante coberturas precargadas de los años 2008-2011, 2012, 2103, 2014 y 2015</p>
+                    <p class="w3-text-green w3-padding-8"><strong>A continuación puede encontrar las actividadesy resultados por subactividad de la fase seleccionada:</strong></p>
+                    <div class="w3-container">
+                        <!--<p class="w3-text-green"><strong>Plantación</strong></p>-->
+                        <h6 class="w3-text-green">Plantación</h6>
                     </div>
+                    <form class="w3-border">
+                        <div class="w3-container w3-round w3-light-grey">
+                            <p class="w3-text-green w3-padding-8"><strong>Seleccione las coberturas a presentar</strong></p>
+                            <div class="w3-row w3-padding-8">
+                                <div class="w3-col s2">
+                                    <input class="w3-check" type="checkbox">
+                                    <label class="w3-validate">Todos los años</label>
+                                </div>
+                                <div class="w3-col s2">
+                                    <input class="w3-check" type="checkbox">
+                                    <label class="w3-validate">2005-2011</label>
+                                </div>
+                                <div class="w3-col s2">
+                                    <input class="w3-check" type="checkbox">
+                                    <label class="w3-validate">2012</label>
+                                </div>
+                                <div class="w3-col s2">
+                                    <input class="w3-check" type="checkbox">
+                                    <label class="w3-validate">2013</label>
+                                </div>
+                                <div class="w3-col s2">
+                                    <input class="w3-check" type="checkbox">
+                                    <label class="w3-validate">2014</label>
+                                </div>
+                                <div class="w3-col s2">
+                                    <input class="w3-check" type="checkbox">
+                                    <label class="w3-validate">2015</label>
+                                </div>
+                            </div>
+                            <p class="w3-text-green w3-padding-8"><strong>Escoja la velocidad de visualización</strong></p>
+                            <div class="w3-row w3-padding-8">
+                                <div class="w3-col s6">
+                                    <div class="w3-row">
+                                        <div class="w3-col s4">
+                                            <input class="w3-radio" type="radio" name="gender" value="female">
+                                            <label class="w3-validate">Rápido</label>
+                                        </div>
+                                        <div class="w3-col s4">
+                                            <input class="w3-radio" type="radio" name="gender" value="female">
+                                            <label class="w3-validate">Medio</label>
+                                        </div>
+                                        <div class="w3-col s4">
+                                            <input class="w3-radio" type="radio" name="gender" value="female">
+                                            <label class="w3-validate">Lento</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w3-col s4">
+                                    <button class="w3-btn w3-round w3-border w3-white w3-padding-4">Iniciar</button>
+                                </div>
+                            </div>
+                            <div class="w3-row w3-padding-8"></div>
+                        </div>
 
-
+                    </form>
                 </div>
             </div>
         </div>

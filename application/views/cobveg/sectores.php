@@ -29,7 +29,7 @@
             <p><?php echo $encabezado['uni_texto'] ?></p>
         </div>
     </div>
-    <p class="w3-panel w3-text-green">
+    <p class="w3-text-green w3-padding-8">
         <strong>Por favor seleccione el sector de estudio para acceder a la información disponible:</strong>
     </p>
     <div>
