@@ -1,6 +1,6 @@
 <script>
     $(function () {
-        $("#tab_fas_par").tabs();
+        $("#tab_fas_rip").tabs();
     });
 </script>
 <div id="paramo">
@@ -12,23 +12,24 @@
         </div>
     </div>
     <p class="w3-text-green w3-padding-8"><strong>Por favor seleccione la fase de recuperación de interés para acceder a los resultados del sector:</strong></p>
-    <div id="tab_fas_par">
+    <div id="tab_fas_rip">
         <ul>
-            <li><a href="#tab_fas_par-1">Activa</a></li>
-            <li><a href="#tab_fas_par-2">Pasiva</a></li>
-            <li><a href="#tab_fas_par-3">Comunitaria</a></li>
+            <li><a href="#tab_fas_rip-1">Activa</a></li>
+            <li><a href="#tab_fas_rip-2">Pasiva</a></li>
+            <li><a href="#tab_fas_rip-3">Comunitaria</a></li>
         </ul>
         <!--Activa-->
-        <div id="tab_fas_par-1">
+        <div id="tab_fas_rip-1">
             <?php echo $activa;?>
         </div>
         <!--Pasiva-->
-        <div id="tab_fas_par-2">
+        <div id="tab_fas_rip-2">
             <?php echo $pasiva;?>
         </div>
         <!--Comunitaria-->
-        <div id="tab_fas_par-3">
+        <div id="tab_fas_rip-3">
             <?php echo $comunitaria;?>
         </div>
     </div>
 </div>
+

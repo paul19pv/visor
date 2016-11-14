@@ -1,26 +1,4 @@
 /**/
-*{ margin: 0; padding: 0;}
-html, body, #map{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-.padding-10{
-    padding: 10px;
-}
-p{
-    text-align: justify;
-    font-size: 12px;
-    padding: 8px;
-}
-#div_content{
-    position: relative;
-    top: -90%;
-    left:-10%;
-    width: 800px;
-    margin: 0 auto;
-    /**/
-}
 #tabs{
     min-width:  800px;
     min-height: 480px;
@@ -41,94 +19,11 @@ p{
     float:left;
     margin-right: 10px;
 }
-
 #tabs a{
     font-size: 12px;
     font-weight: bold;
 }
-.parrafo{
-    border-radius: 5px;
-    background-color: #F0F0F0;
-    margin-bottom: 10px;
-}
-p.indicador{ 
-    color: #2c8920;
-    font-weight: bold; 
-    /*font-size: 11px;*/
-    padding: 0px;
-    margin-bottom: 10px;
-}
-.unidades{
-    margin-bottom: 5px;
-    min-height: 100px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #F0F0F0;
-}
-.unidades div{
-    margin-left: 10px;
-}
-.encabezado{
-    height: 100px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #F0F0F0;
-    margin-bottom: 10px;
-}
-.encabezado>div>p{
-    padding: 0px;
-    /*font-size: 11px;*/
-}
-.encabezado img{
-    /*height: 90px; */
-}
 
-/*div[id~=tab_actividad-]{
-    padding: 0px;
-}*/
-/*tablas*/
-@media (min-width: 1200px) {
-  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
-    float: left;
-    
-  }
-  .col-lg-12 {
-    width: 100%;
-  }
-  .col-lg-11 {
-    width: 91.66666667%;
-  }
-  .col-lg-10 {
-    width: 83.33333333%;
-  }
-  .col-lg-9 {
-    width: 75%;
-  }
-  .col-lg-8 {
-    width: 66.66666667%;
-  }
-  .col-lg-7 {
-    width: 58.33333333%;
-  }
-  .col-lg-6 {
-    width: 50%;
-  }
-  .col-lg-5 {
-    width: 41.66666667%;
-  }
-  .col-lg-4 {
-    width: 33.33333333%;
-  }
-  .col-lg-3 {
-    width: 25%;
-  }
-  .col-lg-2 {
-    width: 16.66666667%;
-  }
-  .col-lg-1 {
-    width: 8.33333333%;
-  }
-}
 table{
     border-collapse: collapse;
     margin-left: 10px;

@@ -1,9 +1,12 @@
 <script>
     $(function () {
         $(".sectores").click(function () {
+            $("#tabs").tabs("option", "disabled", []);
             $("#tabs").tabs("option", "active", 3);
             var id = $(this).attr('id');
             paramo(id);
+            bosque(id);
+            ripario(id);
         });
     });
 
@@ -15,6 +18,30 @@
             async: false,
             success: function (datos) {
                 $("#tabs-4").html(datos);
+            }
+        });
+        return false;
+    }
+    function bosque(sec_id) {
+        $.ajax({
+            url: "/visor/CobVeg/view_bosque",
+            type: "POST",
+            data: "sec_id=" + sec_id,
+            async: false,
+            success: function (datos) {
+                $("#tabs-5").html(datos);
+            }
+        });
+        return false;
+    }
+    function ripario(sec_id) {
+        $.ajax({
+            url: "/visor/CobVeg/view_ripario",
+            type: "POST",
+            data: "sec_id=" + sec_id,
+            async: false,
+            success: function (datos) {
+                $("#tabs-6").html(datos);
             }
         });
         return false;
