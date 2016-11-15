@@ -5,11 +5,15 @@ class CobVeg extends CI_Controller{
         parent::__construct();
         $this->load->model('CobVeg_model', 'cobveg');
     }
+    public function index(){
+        $data_sim['necesidad']=$this->load->view('cobveg/simulacion/necesidad.php','',TRUE);
+        $data['simulacion']=$this->load->view('cobveg/simulacion.php',$data_sim,TRUE);
+        $this->load->view('sitio/cobveg.php',$data);
+    }
     public function view_unidades() {
      $data['unidades']= $this->cobveg->get_unidades();
         $this->load->view('cobveg/unidades.php',$data);   
     }
-    
     public function view_sectores() {
         $uni_id= $this->input->post('id');
         $data['encabezado']=$this->cobveg->get_unidad($uni_id);

@@ -14,10 +14,12 @@
         <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyB5dESKyIaf42zTejjg4ClShw9rXq-_trM'></script>
     </head>
     <body>
+        <!--Mapa Base-->
         <?php echo $mapa; ?>
-        <div id="div_content" class="w3-col s5 w3-display-topleft w3-margin w3-padding-32" style="display: none">
-            <?php echo $content ?>
+        <!-- Contenido Dinamico-->
+        <div id="div_content" class="w3-col s5 w3-display-topleft w3-margin w3-padding-32" style="display: none">    
         </div>
+        <!-- Menu Principal-->
         <div id="div_menu" class="w3-card-4 w3-col s5 w3-display-middle w3-blue w3-round-large" >
             <header class="w3-container w3-center">
                 <h1>Sistema de Información y Monitoreo</h1>
@@ -39,15 +41,15 @@
                 </div>
 
             </div>
-
             <footer class="w3-container">
                 <p id="txt_ini"></p>
             </footer>
         </div>
-        <div id="div_nav" class="w3-container w3-display-topmiddle w3-margin w3-blue" style="display: none">
+        <!--Navegacion-->
+        <div id="div_nav" class="w3-container w3-display-topmiddle w3-margin w3-blue w3-round" style="display: none">
             <div class="w3-row">
                 <div class="w3-col s1">
-                    <img id="img_content" style="cursor:pointer" src="<?php echo base_url() ?>images/iconos/monitoreo.png">
+                    <img id="img_content" style="cursor:pointer;margin-bottom: 0px;" src="<?php echo base_url() ?>images/iconos/monitoreo.png">
                 </div>
             </div>
         </div>
@@ -70,19 +72,32 @@
                 });
 
                 $("#img_cobveg").click(function () {
+                    cobveg();
                     $("#div_menu").hide('fade', '', 1000, call_cobveg);
                 });
                 function call_cobveg() {
-                    $("#div_content").show('fade','',1000,'');
+                    $("#div_content").show('fade', '', 1000, '');
                 }
                 $("#img_content").click(function () {
                     $("#div_nav").hide('fade', '', 1000, call_content);
                 });
                 function call_content() {
-                    $("#div_content").show('fade','',1000,'');
+                    $("#div_content").show('fade', '', 1000, '');
                 }
 
-            })
+                function cobveg() {
+                    $.ajax({
+                        url: "/visor/CobVeg/index",
+                        type: "POST",
+                        async: false,
+                        success: function (datos) {
+                            $("#div_content").html(datos);
+                        }
+                    });
+                    return false;
+                }
+
+            });
         </script>
 
     </body>
