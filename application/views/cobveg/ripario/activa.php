@@ -13,7 +13,7 @@
         <li><a href="#tab_rip_act-1">Síntesis</a></li>
         <li><a href="#tab_rip_act-2">Plantación</a></li>
         <li><a href="#tab_rip_act-3">Mantenimiento</a></li>
-        <li><a href="#tab_rip_act-4">Simulación</a></li>
+        <li><a href="#tab_rip_act-4">Seguimiento</a></li>
     </ul>
     <!--Síntesis-->
     <div id="tab_rip_act-1">

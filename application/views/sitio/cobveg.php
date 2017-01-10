@@ -19,12 +19,19 @@
             }
         });
         $("#ui-id-2").click(function () {
-            unidad();
+            //unidad();
             //$("#tabs").tabs("option", "disabled", [3,4,5]);
             var disabled = $("#tabs").tabs("option", "disabled");
             if (disabled !== true) {
                 $("#tabs").tabs("option", "disabled", [3, 4, 5]);
             }
+            var options = {
+                center: {lat: -0.2, lng: -78.85},
+                zoom: 10,
+                mapTypeId: google.maps.MapTypeId.TERRAIN
+            };
+            map.setOptions(options);
+
         });
         $("#ui-id-3").click(function () {
             var disabled = $("#tabs").tabs("option", "disabled");
@@ -47,6 +54,7 @@
         function callnav() {
             $("#div_nav").show('fade', '', 1000, '');
         }
+        
     });
     function unidad() {
         $.ajax({
@@ -90,7 +98,7 @@
     </div>
     <!--unidad hidrica-->
     <div id="tabs-2" style="height: 380px;overflow-y: scroll;overflow-x: hidden;">
-
+        <?php echo $unidad; ?>
     </div>
     <!--sectores-->
     <div id="tabs-3" style="height: 400px;overflow-y: scroll;overflow-x: hidden;">
@@ -113,6 +121,6 @@
     </div>
     <!--simulacion-->
     <div id="tabs-7" style="height: 400px;overflow-y: scroll;overflow-x: hidden;">
-        <?php echo $simulacion?>
+        <?php echo $simulacion ?>
     </div>
 </div>

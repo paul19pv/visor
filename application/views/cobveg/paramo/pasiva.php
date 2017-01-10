@@ -13,7 +13,8 @@
         <li><a href="#tab_par_pas-1">Síntesis</a></li>
         <li><a href="#tab_par_pas-2">Cercado</a></li>
         <li><a href="#tab_par_pas-3">Mantenimiento</a></li>
-        <li><a href="#tab_par_pas-4">Simulación</a></li>
+        <li><a href="#tab_par_pas-4">Seguimiento</a></li>
+        <li><a href="#tab_par_pas-5">Beneficio Hidrologico</a></li>
     </ul>
     <!--Sintesis-->
     <div id="tab_par_pas-1">
@@ -318,4 +319,5 @@
 
 
     </div>
+    <div class="tab_par_pas-5"></div>
 </div>

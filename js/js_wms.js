@@ -1,14 +1,16 @@
 /* 
-    Document   : wms.js
-    Created on : Feb 16, 2011, 3:25:27 PM
-    Author     : "Gavin Jackson <Gavin.Jackson@csiro.au>"
-
-    Refactored code from http://lyceum.massgis.state.ma.us/wiki/doku.php?id=googlemapsv3:home
-*/
+ Document   : wms.js
+ Created on : Feb 16, 2011, 3:25:27 PM
+ Author     : "Gavin Jackson <Gavin.Jackson@csiro.au>"
+ 
+ Refactored code from http://lyceum.massgis.state.ma.us/wiki/doku.php?id=googlemapsv3:home
+ */
 
 function bound(value, opt_min, opt_max) {
-    if (opt_min != null) value = Math.max(value, opt_min);
-    if (opt_max != null) value = Math.min(value, opt_max);
+    if (opt_min != null)
+        value = Math.max(value, opt_min);
+    if (opt_max != null)
+        value = Math.min(value, opt_max);
     return value;
 }
 
@@ -23,10 +25,11 @@ function radiansToDegrees(rad) {
 function MercatorProjection() {
     var MERCATOR_RANGE = 256;
     this.pixelOrigin_ = new google.maps.Point(
-        MERCATOR_RANGE / 2, MERCATOR_RANGE / 2);
+            MERCATOR_RANGE / 2, MERCATOR_RANGE / 2);
     this.pixelsPerLonDegree_ = MERCATOR_RANGE / 360;
     this.pixelsPerLonRadian_ = MERCATOR_RANGE / (2 * Math.PI);
-};
+}
+;
 
 MercatorProjection.prototype.fromLatLngToPoint = function (latLng, opt_point) {
     var me = this;
@@ -64,8 +67,8 @@ MercatorProjection.prototype.fromDivPixelToSphericalMercator = function (pixel, 
 
     return new google.maps.Point(x, y);
 };
-
-function loadWMS(map, baseURL, customParams) {
+var overlayWMS;
+function loadWMS(map, baseURL, customParams, nombre) {
     var tileHeight = 256;
     var tileWidth = 256;
     var opacityLevel = 0.75;
@@ -75,52 +78,53 @@ function loadWMS(map, baseURL, customParams) {
 
     //var baseURL = "";
     var wmsParams = [
-    "REQUEST=GetMap",
-    "SERVICE=WMS",
-    "VERSION=1.1.1",
-    "BGCOLOR=0xFFFFFF",
-    "TRANSPARENT=TRUE",
-    "SRS=EPSG:900913", // 3395?
-    "WIDTH=" + tileWidth,
-    "HEIGHT=" + tileHeight
+        "REQUEST=GetMap",
+        "SERVICE=WMS",
+        "VERSION=1.1.1",
+        "BGCOLOR=0xFFFFFF",
+        "TRANSPARENT=TRUE",
+        "SRS=EPSG:900913", // 3395?
+        "WIDTH=" + tileWidth,
+        "HEIGHT=" + tileHeight
     ];
 
     //add additional parameters
     var wmsParams = wmsParams.concat(customParams);
 
     var overlayOptions =
-    {
-        getTileUrl: function (coord, zoom) {
-            var lULP = new google.maps.Point(coord.x * 256, (coord.y + 1) * 256);
-            var lLRP = new google.maps.Point((coord.x + 1) * 256, coord.y * 256);
+            {
+                getTileUrl: function (coord, zoom) {
+                    var lULP = new google.maps.Point(coord.x * 256, (coord.y + 1) * 256);
+                    var lLRP = new google.maps.Point((coord.x + 1) * 256, coord.y * 256);
 
-            var projectionMap = new MercatorProjection();
+                    var projectionMap = new MercatorProjection();
 
-            var lULg = projectionMap.fromDivPixelToSphericalMercator(lULP, zoom);
-            var lLRg = projectionMap.fromDivPixelToSphericalMercator(lLRP, zoom);
+                    var lULg = projectionMap.fromDivPixelToSphericalMercator(lULP, zoom);
+                    var lLRg = projectionMap.fromDivPixelToSphericalMercator(lLRP, zoom);
 
-            var lUL_Latitude = lULg.y;
-            var lUL_Longitude = lULg.x;
-            var lLR_Latitude = lLRg.y;
-            var lLR_Longitude = lLRg.x;
-            //GJ: there is a bug when crossing the -180 longitude border (tile does not render) - this check seems to fix it
-            if (lLR_Longitude < lUL_Longitude) {
-                lLR_Longitude = Math.abs(lLR_Longitude);
-            }
-            var urlResult = baseURL + wmsParams.join("&") + "&bbox=" + lUL_Longitude + "," + lUL_Latitude + "," + lLR_Longitude + "," + lLR_Latitude;
+                    var lUL_Latitude = lULg.y;
+                    var lUL_Longitude = lULg.x;
+                    var lLR_Latitude = lLRg.y;
+                    var lLR_Longitude = lLRg.x;
+                    //GJ: there is a bug when crossing the -180 longitude border (tile does not render) - this check seems to fix it
+                    if (lLR_Longitude < lUL_Longitude) {
+                        lLR_Longitude = Math.abs(lLR_Longitude);
+                    }
+                    var urlResult = baseURL + wmsParams.join("&") + "&bbox=" + lUL_Longitude + "," + lUL_Latitude + "," + lLR_Longitude + "," + lLR_Latitude;
 
-            return urlResult;
-        },
+                    return urlResult;
+                },
+                name:nombre,
 
-        tileSize: new google.maps.Size(tileHeight, tileWidth),
+                tileSize: new google.maps.Size(tileHeight, tileWidth),
 
-        minZoom: minZoomLevel,
-        maxZoom: maxZoomLevel,
+                minZoom: minZoomLevel,
+                maxZoom: maxZoomLevel,
 
-        opacity: opacityLevel,
+                opacity: opacityLevel
 
-        isPng: isPng
-    };
+                        //isPng: isPng
+            };
 
     overlayWMS = new google.maps.ImageMapType(overlayOptions);
 
@@ -129,12 +133,151 @@ function loadWMS(map, baseURL, customParams) {
     map.setOptions({
         mapTypeControlOptions: {
             mapTypeIds: [
-            google.maps.MapTypeId.ROADMAP,
-            google.maps.MapTypeId.TERRAIN,
-            google.maps.MapTypeId.SATELLITE,
-            google.maps.MapTypeId.HYBRID
+                google.maps.MapTypeId.ROADMAP,
+                google.maps.MapTypeId.TERRAIN,
+                google.maps.MapTypeId.SATELLITE,
+                google.maps.MapTypeId.HYBRID
             ],
             style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
         }
     });
+}
+
+function getLayer(nombre) {
+    var tileHeight = 256;
+    var tileWidth = 256;
+    var opacityLevel = 0.75;
+    var isPng = true;
+    var minZoomLevel = 2;
+    var maxZoomLevel = 28;
+    var baseURL="http://infoagua-guayllabamba.ec:8080/geoserver/wms?";
+
+    //var baseURL = "";
+    var wmsParams = [
+        "REQUEST=GetMap",
+        "SERVICE=WMS",
+        "VERSION=1.1.1",
+        "BGCOLOR=0xFFFFFF",
+        "TRANSPARENT=TRUE",
+        "SRS=EPSG:900913", // 3395?
+        "WIDTH=" + tileWidth,
+        "HEIGHT=" + tileHeight,
+        "FORMAT=image/png8",
+        "LAYERS="+nombre
+    ];
+
+    //add additional parameters
+    //var wmsParams = wmsParams.concat(nombre);
+
+    var overlayOptions =
+            {
+                getTileUrl: function (coord, zoom) {
+                    var lULP = new google.maps.Point(coord.x * 256, (coord.y + 1) * 256);
+                    var lLRP = new google.maps.Point((coord.x + 1) * 256, coord.y * 256);
+
+                    var projectionMap = new MercatorProjection();
+
+                    var lULg = projectionMap.fromDivPixelToSphericalMercator(lULP, zoom);
+                    var lLRg = projectionMap.fromDivPixelToSphericalMercator(lLRP, zoom);
+
+                    var lUL_Latitude = lULg.y;
+                    var lUL_Longitude = lULg.x;
+                    var lLR_Latitude = lLRg.y;
+                    var lLR_Longitude = lLRg.x;
+                    //GJ: there is a bug when crossing the -180 longitude border (tile does not render) - this check seems to fix it
+                    if (lLR_Longitude < lUL_Longitude) {
+                        lLR_Longitude = Math.abs(lLR_Longitude);
+                    }
+                    var urlResult = baseURL + wmsParams.join("&") + "&bbox=" + lUL_Longitude + "," + lUL_Latitude + "," + lLR_Longitude + "," + lLR_Latitude;
+
+                    return urlResult;
+                },
+                name:nombre,
+
+                tileSize: new google.maps.Size(tileHeight, tileWidth),
+
+                minZoom: minZoomLevel,
+                maxZoom: maxZoomLevel,
+
+                opacity: opacityLevel
+
+                        //isPng: isPng
+            };
+    var layer = new google.maps.ImageMapType(overlayOptions);
+    return layer;
+}
+
+function addLayer(nombre) {
+    var tileHeight = 256;
+    var tileWidth = 256;
+    var opacityLevel = 0.75;
+    var isPng = true;
+    var minZoomLevel = 2;
+    var maxZoomLevel = 28;
+    //var baseURL="http://localhost:8080/geoserver/wms?";
+    var baseURL="http://infoagua-guayllabamba.ec:8080/geoserver/wms?";
+    
+
+    //var baseURL = "";
+    var wmsParams = [
+        "REQUEST=GetMap",
+        "SERVICE=WMS",
+        "VERSION=1.1.1",
+        "BGCOLOR=0xFFFFFF",
+        "TRANSPARENT=TRUE",
+        "SRS=EPSG:900913", // 3395?
+        "WIDTH=" + tileWidth,
+        "HEIGHT=" + tileHeight,
+        "FORMAT=image/png8",
+        "LAYERS="+nombre
+    ];
+
+    //add additional parameters
+    //var wmsParams = wmsParams.concat(nombre);
+
+    var overlayOptions =
+            {
+                getTileUrl: function (coord, zoom) {
+                    var lULP = new google.maps.Point(coord.x * 256, (coord.y + 1) * 256);
+                    var lLRP = new google.maps.Point((coord.x + 1) * 256, coord.y * 256);
+
+                    var projectionMap = new MercatorProjection();
+
+                    var lULg = projectionMap.fromDivPixelToSphericalMercator(lULP, zoom);
+                    var lLRg = projectionMap.fromDivPixelToSphericalMercator(lLRP, zoom);
+
+                    var lUL_Latitude = lULg.y;
+                    var lUL_Longitude = lULg.x;
+                    var lLR_Latitude = lLRg.y;
+                    var lLR_Longitude = lLRg.x;
+                    //GJ: there is a bug when crossing the -180 longitude border (tile does not render) - this check seems to fix it
+                    if (lLR_Longitude < lUL_Longitude) {
+                        lLR_Longitude = Math.abs(lLR_Longitude);
+                    }
+                    var urlResult = baseURL + wmsParams.join("&") + "&bbox=" + lUL_Longitude + "," + lUL_Latitude + "," + lLR_Longitude + "," + lLR_Latitude;
+
+                    return urlResult;
+                },
+                name:nombre,
+
+                tileSize: new google.maps.Size(tileHeight, tileWidth),
+
+                minZoom: minZoomLevel,
+                maxZoom: maxZoomLevel,
+
+                opacity: opacityLevel
+
+                        //isPng: isPng
+            };
+    var layer = new google.maps.ImageMapType(overlayOptions);
+    map.overlayMapTypes.insertAt(0, layer);
+}
+
+function removeOverlay(map) {
+   
+    map.overlayMapTypes.removeAt(0);
+    //map.overlayMapTypes.insertAt(0, overlayWMS);
+}
+function removeLayer(map){
+    map.overlayMapTypes.removeAt(0);   
 }

@@ -4,7 +4,14 @@
             $("#tabs").tabs("option", "active", 2);
             var id = $(this).attr('id');
             sector(id);
+            var latitud = $("#lat" + id).val(), longitud = $("#lon" + id).val();
+            map.setCenter({lat: parseFloat(latitud), lng: parseFloat(longitud)});
+            map.setZoom(11);
         });
+
+
+
+
     });
 
     function sector(unidad) {
@@ -17,6 +24,7 @@
                 $("#tabs-3").html(datos);
             }
         });
+        
         return false;
     }
 </script>
@@ -33,11 +41,13 @@
 
 <div>
     <?php foreach ($unidades as $row): ?>
-        <div id="<?php echo $row->uni_id ?>" class="unidades w3-panel w3-light-grey w3-round">
+        <div id="<?php echo $row->uni_id ?>" class="unidades w3-panel w3-light-grey w3-round" style="cursor: pointer;" >
             <img src="<?php echo base_url() . "images/cobertura/unidades/" . $row->uni_imagen ?>" class="w3-left w3-margin-top w3-margin-bottom w3-margin-right" />
             <div class="w3-rest">
                 <h4><?php echo $row->uni_nombre ?></h4>
                 <p><?php echo $row->uni_texto ?></p>
+                <input type="hidden" id="<?php echo "lat" . $row->uni_id ?>" value="<?php echo $row->uni_latitud ?>" />
+                <input type="hidden" id="<?php echo "lon" . $row->uni_id ?>" value="<?php echo $row->uni_longitud ?>" />
             </div>
         </div>
     <?php endforeach; ?>

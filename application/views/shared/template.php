@@ -10,7 +10,9 @@
         <script src="<?php echo base_url() ?>js/jquery.js"></script>
         <script src="<?php echo base_url() ?>js/jquery-ui.js"></script>
         <script src="<?php echo base_url() ?>js/js_mapa.js"></script>
-        <script src="<?php echo base_url() ?>js/js_wms.js"></script>
+        <script src="<?php echo base_url() ?>js/geoxml/kmz/geoxml3.js"></script>
+        <!--<script src="<?php echo base_url() ?>js/js_wms.js"></script>-->
+        
         <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyB5dESKyIaf42zTejjg4ClShw9rXq-_trM'></script>
     </head>
     <body>
@@ -41,7 +43,7 @@
                 </div>
 
             </div>
-            <footer class="w3-container">
+            <footer class="w3-container" style="height: 60px;">
                 <p id="txt_ini"></p>
             </footer>
         </div>
@@ -74,6 +76,7 @@
                 $("#img_cobveg").click(function () {
                     cobveg();
                     $("#div_menu").hide('fade', '', 1000, call_cobveg);
+                    
                 });
                 function call_cobveg() {
                     $("#div_content").show('fade', '', 1000, '');
@@ -94,7 +97,10 @@
                             $("#div_content").html(datos);
                         }
                     });
+                    
+                    //geoXml.hideDocument(geoXml.docs[0]);
                     return false;
+                    
                 }
 
             });

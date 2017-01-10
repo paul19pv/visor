@@ -18,7 +18,8 @@
         <li><a href="#tab_par_com-2">Agroforestería</a></li>
         <li><a href="#tab_par_com-3">Silvopastura</a></li>
         <li><a href="#tab_par_com-4">Mantenimiento</a></li>
-        <li><a href="#tab_par_com-5">Simulación</a></li>
+        <li><a href="#tab_par_com-5">Seguimiento</a></li>
+        <li><a href="#tab_par_com-5">Beneficio Hidrologico</a></li>
     </ul>
     <!--sintesis-->
     <div id="tab_par_com-1">
@@ -567,4 +568,5 @@
 
         </div>
     </div>
+    <div class="tab_par_com-5"></div>
 </div>

@@ -1,9 +1,62 @@
 <script>
     $(function () {
-        $("#tab_par_act").tabs();
-        $("#tab_par_sim_act").tabs();
+        $("#tab_par_act").tabs({
+            beforeLoad: function (event, ui) {
+                ui.jqXHR.fail(function () {
+                    ui.panel.html(
+                            "Couldn't load this tab. We'll try to fix this as soon as possible. " +
+                            "If this wouldn't be a demo.");
+                });
+            }
+        });
+
+        var customParams = [
+            "FORMAT=image/png8",
+            "LAYERS=cc:mov_fis_san"
+        ];
+        var jsonData = $.ajax({
+            url: "/visor/cobveg/view_informacion",
+            type: "POST",
+            //data: $("#insertForm").serialize() + "&variable=" + variable,
+            dataType: "json",
+            async: false}).responseText;
+        var cord_punto = {lat: -0.48, lng: -78.54};
+        var contentString = '<div id="content">' +
+                '<p>Hola Mundo</p>' +
+                jsonData +
+                '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: jsonData
+        });
+
+
+
+        $("#btn_activa").click(function () {
+            if ($("#btn_activa").is(':checked')) {
+                loadWMS(map, "http://infoagua-guayllabamba.ec:8080/geoserver/wms?", customParams);
+                var marker = new google.maps.Marker({
+                    position: cord_punto,
+                    map: map,
+                    title: 'Información'
+                });
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+
+                });
+
+            } else {
+                removeOverlay(map);
+            }
+
+        });
+
+
+
+
     });
 </script>
+
 <div class="w3-container w3-light-grey w3-round w3-padding-4">
     <p>Las actividades de la recuperación Activa consideradas son Plantación y Mantenimiento </p>
 </div>
@@ -13,7 +66,8 @@
         <li><a href="#tab_par_act-1">Síntesis</a></li>
         <li><a href="#tab_par_act-2">Plantación</a></li>
         <li><a href="#tab_par_act-3">Mantenimiento</a></li>
-        <li><a href="#tab_par_act-4">Simulación</a></li>
+        <li><a href="<?php echo base_url()."CobVeg/view_seguimiento/activa/plantacion/".$sec_id?>">Seguimiento</a></li>
+        <li><a href="#tab_par_act-5">Beneficio Hidrologico</a></li>
     </ul>
     <!--Síntesis-->
     <div id="tab_par_act-1">
@@ -30,7 +84,7 @@
                         <thead>
                             <tr class="w3-green">
                                 <th colspan="2">Marcado</th>
-                                <th>Oyado</th>
+                                <th>Hoyado</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -185,7 +239,7 @@
             <div class="w3-padding w3-display-topmiddle">
                 <form>
                     <div class="w3-row">
-                        <input class="w3-check" type="checkbox">
+                        <input id="btn_activa" class="w3-check" type="checkbox">
                         <label class="w3-validate">Ver mapa</label>
                     </div>
                 </form>
@@ -360,72 +414,9 @@
             </div>
         </div>
     </div>
-    <!--Simulación-->
-    <div id="tab_par_act-4">
-        <p class="w3-container w3-light-grey w3-round w3-padding-4">Esta sección nos permite visualizar cómo avanzan los procesos de restauración activa en el ecosistema páramo a través de la actividad plantación, mediante coberturas precargadas de los años 2008-2011, 2012, 2013, 2014 y 2015</p>
-        <p class="w3-text-green w3-padding-8"><strong>A continuación puede encontrar las actividadesy resultados por subactividad de la fase seleccionada:</strong></p>
-        <div id="tab_par_sim_act">
-            <ul>
-                <li><a href="#tab_par_sim_act-1">Plantación</a></li>
-            </ul>
-            <div id="tab_par_sim_act-1">
-                <form class="w3-light-grey w3-round">
-                    <div class="w3-container">
-                        <p class="w3-padding-8"><strong>Seleccione las coberturas a presentar</strong></p>
-                        <div class="w3-row w3-padding-8">
-                            <div class="w3-col s2">
-                                <input class="w3-check" type="checkbox">
-                                <label class="w3-validate">Todos los años</label>
-                            </div>
-                            <div class="w3-col s2">
-                                <input class="w3-check" type="checkbox">
-                                <label class="w3-validate">2005-2011</label>
-                            </div>
-                            <div class="w3-col s2">
-                                <input class="w3-check" type="checkbox">
-                                <label class="w3-validate">2012</label>
-                            </div>
-                            <div class="w3-col s2">
-                                <input class="w3-check" type="checkbox">
-                                <label class="w3-validate">2013</label>
-                            </div>
-                            <div class="w3-col s2">
-                                <input class="w3-check" type="checkbox">
-                                <label class="w3-validate">2014</label>
-                            </div>
-                            <div class="w3-col s2">
-                                <input class="w3-check" type="checkbox">
-                                <label class="w3-validate">2015</label>
-                            </div>
-                        </div>
-                        <p class="w3-padding-8"><strong>Escoja la velocidad de visualización</strong></p>
-                        <div class="w3-row w3-padding-8 w3-margin-bottom">
-                            <div class="w3-col s6">
-                                <div class="w3-row">
-                                    <div class="w3-col s4">
-                                        <input class="w3-radio" type="radio" name="gender" value="female">
-                                        <label class="w3-validate">Rápido</label>
-                                    </div>
-                                    <div class="w3-col s4">
-                                        <input class="w3-radio" type="radio" name="gender" value="female">
-                                        <label class="w3-validate">Medio</label>
-                                    </div>
-                                    <div class="w3-col s4">
-                                        <input class="w3-radio" type="radio" name="gender" value="female">
-                                        <label class="w3-validate">Lento</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w3-col s4">
-                                <button class="w3-btn w3-round w3-border w3-white w3-padding-4">Iniciar</button>
-                            </div>
-                        </div>
+    <!--Beneficio Hidrologico-->
+    <div id="tab_par_act-5">
 
-                    </div>
-
-                </form>
-            </div>
-
-        </div>
     </div>
+    <!--<div class="tab_par_act-5"></div>-->
 </div>

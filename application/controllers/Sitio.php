@@ -6,6 +6,7 @@ class Sitio extends CI_Controller {
         //$data['mapa']='algo';
         //$data['content']=$this->load->view('sitio/content','',TRUE);
         $this->load->view('shared/template',$data);
+        //$this->load->view('shared/prueba',$data);
     }
     public function content() {
         $data['content']='';

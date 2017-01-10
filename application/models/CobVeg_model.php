@@ -8,6 +8,7 @@ class CobVeg_model extends CI_Model {
         parent::__construct();
     }
     public function get_unidades() {
+        $this->db->order_by('uni_id', 'ASC');
         $query = $this->db->get('unidad');
         //var_dump($this->db->last_query());
         return $query->result();
@@ -36,6 +37,13 @@ class CobVeg_model extends CI_Model {
         $query = $this->db->get('plantacion');
         //var_dump($this->db->last_query());
         return $query->row();
+    }
+    public function get_capas_sim($fase,$actividad,$sector){
+        $this->db->select('sim_archivo, sim_periodo');
+        $array = array('sim_sector' => $sector, 'sim_fase' => $fase, 'sim_actividad' => $actividad);
+        $this->db->where($array);
+        $query= $this->db->get('simulacion');
+        return $query->result_array();
     }
 
 }
