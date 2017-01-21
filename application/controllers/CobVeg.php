@@ -6,9 +6,9 @@ class CobVeg extends CI_Controller{
         $this->load->model('CobVeg_model', 'cobveg');
     }
     public function index(){
-        $data_sim['necesidad']=$this->load->view('cobveg/simulacion/necesidad.php','',TRUE);
+        //$data_sim['necesidad']=$this->load->view('cobveg/simulacion/necesidad.php','',TRUE);
         $data['unidad']= $this->view_unidades();
-        $data['simulacion']=$this->load->view('cobveg/simulacion.php',$data_sim,TRUE);
+        //$data['simulacion']=$this->load->view('cobveg/simulacion.php',$data_sim,TRUE);
         $this->load->view('sitio/cobveg.php',$data);
     }
     public function view_unidades() {
@@ -48,9 +48,28 @@ class CobVeg extends CI_Controller{
     public function view_informacion() {
         $this->load->view('cobveg/view_informacion');
     }
-    public function view_seguimiento($fase,$actividad,$sector) {
-        
-        $data['lista']= json_encode($this->cobveg->get_capas_sim($fase,$actividad,$sector));
+    public function view_seguimiento($fase,$sector) {
+        //$data['lista']= json_encode($this->cobveg->get_coberturas_sector($fase,$sector));
+        $data['datos']=$this->cobveg->get_coberturas_sector($fase,$sector);
         $this->load->view('cobveg/componentes/seguimiento',$data);
+    }
+    public function view_simulacion($unidad){
+        $data_necesidad['unidad']=$unidad;
+        $data['necesidad']=$this->load->view('cobveg/simulacion/necesidad.php',$data_necesidad,TRUE);
+        $this->load->view('cobveg/simulacion',$data);
+    }
+    public function view_coberturas_unidad($unidad,$demanda){
+        $data['datos']= $this->cobveg->get_coberturas_unidad($unidad,$demanda);
+        $data['unidad']=$unidad;
+        $data['demanda']=$demanda;
+        $this->load->view('cobveg/simulacion/simulacion',$data);
+    }
+    public function get_coberturas_unidad($unidad,$demanda) {
+        $data=$this->cobveg->get_coberturas_unidad($unidad,$demanda);
+        echo json_encode($data);
+    }
+    public function get_coberturas_sector($sector,$demanda) {
+        $data=$this->cobveg->get_coberturas_unidad($sector,$demanda);
+        echo json_encode($data);
     }
 }

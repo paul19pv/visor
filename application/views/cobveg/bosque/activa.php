@@ -30,7 +30,7 @@
                         <thead>
                             <tr class="w3-green">
                                 <th colspan="2">Marcado</th>
-                                <th>Oyado</th>
+                                <th>Hoyado</th>
                             </tr>
                         </thead>
                         <tbody>

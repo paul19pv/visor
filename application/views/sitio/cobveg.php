@@ -1,7 +1,7 @@
 <script>
     $(function () {
         $("#tabs").tabs();
-        $("#tabs").tabs("option", "disabled", [3, 4, 5]);
+        $("#tabs").tabs("option", "disabled", [2, 3, 4, 5, 6]);
         $("#tabs").draggable();
         $("#tabs").resizable({
             resize: function (event, ui) {
@@ -19,18 +19,12 @@
             }
         });
         $("#ui-id-2").click(function () {
-            //unidad();
-            //$("#tabs").tabs("option", "disabled", [3,4,5]);
             var disabled = $("#tabs").tabs("option", "disabled");
             if (disabled !== true) {
-                $("#tabs").tabs("option", "disabled", [3, 4, 5]);
+                $("#tabs").tabs("option", "disabled", [2, 3, 4, 5, 6]);
             }
-            var options = {
-                center: {lat: -0.2, lng: -78.85},
-                zoom: 10,
-                mapTypeId: google.maps.MapTypeId.TERRAIN
-            };
-            map.setOptions(options);
+            map.setCenter({lat: -0.2, lng: -78.85});
+            map.setZoom(10);
 
         });
         $("#ui-id-3").click(function () {
@@ -54,19 +48,9 @@
         function callnav() {
             $("#div_nav").show('fade', '', 1000, '');
         }
-        
+
     });
-    function unidad() {
-        $.ajax({
-            url: "/visor/CobVeg/view_unidades",
-            type: "POST",
-            async: false,
-            success: function (datos) {
-                $("#tabs-2").html(datos);
-            }
-        });
-        return false;
-    }
+
 </script>
 <div id="tabs" style="min-width:  800px;min-height: 480px;">
     <div class="w3-display-container w3-blue" style="height:50px;">
@@ -102,7 +86,7 @@
     </div>
     <!--sectores-->
     <div id="tabs-3" style="height: 400px;overflow-y: scroll;overflow-x: hidden;">
-        <div class="w3-panel w3-orange">
+        <div class="w3-panel w3-blue">
             <h3>Aviso</h3>
             <p>Primero seleccione una unidad hídrica en la pestaña anterior</p>
         </div>
@@ -121,6 +105,5 @@
     </div>
     <!--simulacion-->
     <div id="tabs-7" style="height: 400px;overflow-y: scroll;overflow-x: hidden;">
-        <?php echo $simulacion ?>
     </div>
 </div>

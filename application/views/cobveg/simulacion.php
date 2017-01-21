@@ -11,7 +11,6 @@
     <ul>
         <li><a href="#tab_sim_esc-1">Necesidad de Conservación</a></li>
         <li><a href="#tab_sim_esc-2">Viabilidad de Recuperación</a></li>
-
     </ul>
     <div id="tab_sim_esc-1">
         <?php echo $necesidad; ?>

@@ -1,110 +1,121 @@
 <html>
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <?php header("Access-Control-Allow-Origin: *"); ?>
+        <meta http-equiv = "content-type" content = "text/html; charset=utf-8" />
 
-        <link href="<?php echo base_url() ?>css/jquery-ui.css" rel="stylesheet" />
+        <link href = "<?php echo base_url() ?>css/jquery-ui.css" rel = "stylesheet" />
 
-        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-        <link href="<?php echo base_url() ?>css/style.css" rel="stylesheet" />
-
-        <script src="<?php echo base_url() ?>js/jquery.js"></script>
-        <script src="<?php echo base_url() ?>js/jquery-ui.js"></script>
-        <script src="<?php echo base_url() ?>js/js_mapa.js"></script>
-        <script src="<?php echo base_url() ?>js/geoxml/kmz/geoxml3.js"></script>
-        <!--<script src="<?php echo base_url() ?>js/js_wms.js"></script>-->
+        <link rel = "stylesheet" href = "http://www.w3schools.com/lib/w3.css">
+        <link href = "<?php echo base_url() ?>css/style.css" rel = "stylesheet" />
         
-        <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyB5dESKyIaf42zTejjg4ClShw9rXq-_trM'></script>
-    </head>
-    <body>
-        <!--Mapa Base-->
-        <?php echo $mapa; ?>
-        <!-- Contenido Dinamico-->
-        <div id="div_content" class="w3-col s5 w3-display-topleft w3-margin w3-padding-32" style="display: none">    
-        </div>
-        <!-- Menu Principal-->
-        <div id="div_menu" class="w3-card-4 w3-col s5 w3-display-middle w3-blue w3-round-large" >
-            <header class="w3-container w3-center">
-                <h1>Sistema de Información y Monitoreo</h1>
-            </header>
-            <div class="w3-container">
-                <div class="w3-row">
-                    <div class="w3-col s4 w3-center">
-                        <img id="img_cobveg" class="w3-circle" style="cursor:pointer" src="<?php echo base_url() ?>images/iconos/cobveg.png">
-                        <h5>Cobertura Vegetal</h5>
-                    </div>
-                    <div class="w3-col s4 w3-center">
-                        <img id="img_eduamb" class="w3-circle" style="cursor:pointer" src="<?php echo base_url() ?>images/iconos/cobveg.png">
-                        <h5>Educación Ambiental</h5>
-                    </div>
-                    <div class="w3-col s4 w3-center">
-                        <img id="img_conhid" class="w3-circle" style="cursor:pointer" src="<?php echo base_url() ?>images/iconos/cobveg.png">
-                        <h5>Áreas de Conservación</h5>
-                    </div>
-                </div>
 
-            </div>
-            <footer class="w3-container" style="height: 60px;">
-                <p id="txt_ini"></p>
-            </footer>
-        </div>
-        <!--Navegacion-->
-        <div id="div_nav" class="w3-container w3-display-topmiddle w3-margin w3-blue w3-round" style="display: none">
+        <script src = "<?php echo base_url() ?>js/jquery.js"></script>
+    <script src="<?php echo base_url() ?>js/jquery-ui.js"></script>
+    <script src="<?php echo base_url() ?>js/js_mapa.js"></script>
+    <script src="<?php echo base_url() ?>js/geoxml/kmz/geoxml3.js"></script>
+    <script src="<?php echo base_url() ?>js/js_wms.js"></script>
+
+    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyB5dESKyIaf42zTejjg4ClShw9rXq-_trM'></script>
+</head>
+<body>
+    <!--Mapa Base-->
+    <?php echo $mapa; ?>
+    <!-- Contenido Dinamico-->
+    <div id="div_content" class="w3-col s5 w3-display-topleft w3-margin w3-padding-32" style="display: none">    
+    </div>
+    <!-- Menu Principal-->
+    <div id="div_menu" class="w3-card-4 w3-col s5 w3-display-middle w3-blue w3-round-large">
+        <header class="w3-container w3-center">
+            <h1>Sistema de Información y Monitoreo</h1>
+        </header>
+        <div class="w3-container">
             <div class="w3-row">
-                <div class="w3-col s1">
-                    <img id="img_content" style="cursor:pointer;margin-bottom: 0px;" src="<?php echo base_url() ?>images/iconos/monitoreo.png">
+                <div class="w3-col s4 w3-center">
+                    <img id="img_cobveg" class="w3-circle" style="cursor:pointer" src="<?php echo base_url() ?>images/iconos/cobveg.png">
+                    <h5>Cobertura Vegetal</h5>
+                </div>
+                <div class="w3-col s4 w3-center">
+                    <img id="img_eduamb" class="w3-circle" style="cursor:pointer" src="<?php echo base_url() ?>images/iconos/cobveg.png">
+                    <h5>Educación Ambiental</h5>
+                </div>
+                <div class="w3-col s4 w3-center">
+                    <img id="img_conhid" class="w3-circle" style="cursor:pointer" src="<?php echo base_url() ?>images/iconos/cobveg.png">
+                    <h5>Áreas de Conservación</h5>
                 </div>
             </div>
+
         </div>
-        <script>
-            $(function () {
-                $("#img_cobveg").hover(function () {
-                    $("#txt_ini").html("El objetivo que persigue el módulo de cobertura vegetal es recuperar los ecosistemas que han sufrido algún proceso de degradación mejorando su calidad ambiental, restableciendo su funcionalidad, favoreciendo su evolución dinámica hacia etapas más estables y desarrolladas ecológicamente.");
-                }, function () {
-                    $("#txt_ini").html("");
-                });
-                $("#img_eduamb").hover(function () {
-                    $("#txt_ini").html("Texto de Prueba");
-                }, function () {
-                    $("#txt_ini").html("");
-                });
-                $("#img_conhid").hover(function () {
-                    $("#txt_ini").html("Texto de Prueba");
-                }, function () {
-                    $("#txt_ini").html("");
-                });
+        <footer class="w3-container" style="height: 60px;">
+            <p id="txt_ini"></p>
+        </footer>
+    </div>
+    <!--Navegacion-->
+    <div id="div_nav" class="w3-container w3-display-topmiddle w3-margin w3-blue w3-round" style="display: none">
+        <div class="w3-row">
+            <div class="w3-col s1">
+                <img id="img_content" style="cursor:pointer;margin-bottom: 0px;" src="<?php echo base_url() ?>images/iconos/monitoreo.png">
+            </div>
+        </div>
+    </div>
 
-                $("#img_cobveg").click(function () {
-                    cobveg();
-                    $("#div_menu").hide('fade', '', 1000, call_cobveg);
-                    
-                });
-                function call_cobveg() {
-                    $("#div_content").show('fade', '', 1000, '');
-                }
-                $("#img_content").click(function () {
-                    $("#div_nav").hide('fade', '', 1000, call_content);
-                });
-                function call_content() {
-                    $("#div_content").show('fade', '', 1000, '');
-                }
+    <!--informacion-->
+    <div id="div_info" class="w3-container w3-display-topmiddle w3-margin w3-white w3-round" style="display: none">
+    </div>
+    <div id="div_info" class="w3-container w3-display-bottommiddle w3-margin w3-white w3-round" style="display: none" >
+        <button type="button" id="ant_bf_act" onclick="conmutar_capa('ANT_BF_ACT')">Actual</button>
+        <button type="button" id="ant_bf_inc" onclick="conmutar_capa('ANT_BF_INC')">Incremento</button>
+        <button type="button" id="ant_bf_dec" onclick="conmutar_capa('ANT_BF_DEC')">Decremento</button>
+    </div>
+    <script>
+        $(function () {
+            $("#img_cobveg").hover(function () {
+                $("#txt_ini").html("El objetivo que persigue el módulo de cobertura vegetal es recuperar los ecosistemas que han sufrido algún proceso de degradación mejorando su calidad ambiental, restableciendo su funcionalidad, favoreciendo su evolución dinámica hacia etapas más estables y desarrolladas ecológicamente.");
+            }, function () {
+                $("#txt_ini").html("");
+            });
+            $("#img_eduamb").hover(function () {
+                $("#txt_ini").html("Texto de Prueba");
+            }, function () {
+                $("#txt_ini").html("");
+            });
+            $("#img_conhid").hover(function () {
+                $("#txt_ini").html("Texto de Prueba");
+            }, function () {
+                $("#txt_ini").html("");
+            });
 
-                function cobveg() {
-                    $.ajax({
-                        url: "/visor/CobVeg/index",
-                        type: "POST",
-                        async: false,
-                        success: function (datos) {
-                            $("#div_content").html(datos);
-                        }
-                    });
-                    
-                    //geoXml.hideDocument(geoXml.docs[0]);
-                    return false;
-                    
-                }
+            $("#img_cobveg").click(function () {
+                cobveg();
+                $("#div_menu").hide('fade', '', 1000, call_cobveg);
 
             });
-        </script>
+            function call_cobveg() {
+                $("#div_content").show('fade', '', 1000, '');
+            }
+            $("#img_content").click(function () {
+                $("#div_nav").hide('fade', '', 1000, call_content);
+            });
+            function call_content() {
+                $("#div_content").show('fade', '', 1000, '');
+            }
 
-    </body>
+            function cobveg() {
+                $.ajax({
+                    url: "/visor/CobVeg/index",
+                    type: "POST",
+                    async: false,
+                    success: function (datos) {
+                        $("#div_content").html(datos);
+                    }
+                });
+
+                //geoXml.hideDocument(geoXml.docs[0]);
+
+                return false;
+            }
+
+        });
+    </script>
+
+</body>
 </html>

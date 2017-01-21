@@ -1,6 +1,15 @@
 <script>
     $(function () {
-        $("#tab_nec_esc").tabs();
+        $("#tab_nec_esc").tabs({
+            beforeLoad: function (event, ui) {
+                ui.jqXHR.fail(function () {
+                    ui.panel.html(
+                            "Couldn't load this tab. We'll try to fix this as soon as possible. " +
+                            "If this wouldn't be a demo.");
+                });
+            }
+        });
+
         $("#tab_nec_act").tabs();
         $("#tab_nec_mas").tabs();
         $("#tab_nec_men").tabs();
@@ -16,7 +25,7 @@
         <li><a href="#tab_nec_esc-1">Actual</a></li>
         <li><a href="#tab_nec_esc-2">+10% Precipitación + Demanda</a></li>
         <li><a href="#tab_nec_esc-3">-10% Precipitación + Demanda</a></li>
-        <li><a href="#tab_nec_esc-4">Simulación</a></li>
+        <li><a href="<?php echo base_url()."CobVeg/view_coberturas_unidad/".$unidad ."/necesidad"?>">Simulación</a></li>
     </ul>
     <!--Actual-->
     <div id="tab_nec_esc-1">
@@ -805,118 +814,6 @@
 
     </div>
     <!--Simulacion-->
-    <div id="tab_nec_esc-4">
-        <div class="w3-container w3-light-grey w3-round w3-padding-4">
-            <p>Esta sección permite visualizar, para Guayllabamba y Napo, el escenario Necesidad de Conservación, los resultados del período actual y las proyecciones de incremento y decremento de 10% de precipitación y demanda, mediante coberturas precargadas.</p>
-        </div>
-        <br>
-        <div id="tab_nec_sim">
-            <ul>
-                <li><a href="#tab_nec_sim-1">Guayllabamba</a></li>
-                <li><a href="#tab_nec_sim-2">Napo</a></li>
-            </ul>
-            <div id="tab_nec_sim-1">
-                <form class="w3-light-grey w3-round">
-                    <div class="w3-container">
-                        <p class="w3-padding-8"><strong>Seleccione a continuación las coberturas a presentar</strong></p>
-                        <div class="w3-row w3-padding-8">
-                            <div class="w3-col s3">
-                                <input class="w3-check" type="checkbox">
-                                <label class="w3-validate">Todos las opciones</label>
-                            </div>
-                            <div class="w3-col s3">
-                                <input class="w3-check" type="checkbox">
-                                <label class="w3-validate">Actual</label>
-                            </div>
-                            <div class="w3-col s3">
-                                <input class="w3-check" type="checkbox">
-                                <label class="w3-validate">+10% Precipitación +Demanda</label>
-                            </div>
-                            <div class="w3-col s3">
-                                <input class="w3-check" type="checkbox">
-                                <label class="w3-validate">-10% Precipitación -Demanda</label>
-                            </div>
-
-                        </div>
-                        <p class="w3-padding-8"><strong>Escoja la velocidad de visualización</strong></p>
-                        <div class="w3-row w3-padding-8 w3-margin-bottom">
-                            <div class="w3-col s6">
-                                <div class="w3-row">
-                                    <div class="w3-col s4">
-                                        <input class="w3-radio" type="radio" name="gender" value="female">
-                                        <label class="w3-validate">Rápido</label>
-                                    </div>
-                                    <div class="w3-col s4">
-                                        <input class="w3-radio" type="radio" name="gender" value="female">
-                                        <label class="w3-validate">Medio</label>
-                                    </div>
-                                    <div class="w3-col s4">
-                                        <input class="w3-radio" type="radio" name="gender" value="female">
-                                        <label class="w3-validate">Lento</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w3-col s4">
-                                <button class="w3-btn w3-round w3-border w3-white w3-padding-4">Iniciar</button>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </form>
-            </div>
-            <div id="tab_nec_sim-2">
-                <form class="w3-light-grey w3-round">
-                    <div class="w3-container">
-                        <p class="w3-padding-8"><strong>Seleccione a continuación las coberturas a presentar</strong></p>
-                        <div class="w3-row w3-padding-8">
-                            <div class="w3-col s3">
-                                <input class="w3-check" type="checkbox">
-                                <label class="w3-validate">Todos las opciones</label>
-                            </div>
-                            <div class="w3-col s3">
-                                <input class="w3-check" type="checkbox">
-                                <label class="w3-validate">Actual</label>
-                            </div>
-                            <div class="w3-col s3">
-                                <input class="w3-check" type="checkbox">
-                                <label class="w3-validate">+10% Precipitación +Demanda</label>
-                            </div>
-                            <div class="w3-col s3">
-                                <input class="w3-check" type="checkbox">
-                                <label class="w3-validate">-10% Precipitación -Demanda</label>
-                            </div>
-
-                        </div>
-                        <p class="w3-padding-8"><strong>Escoja la velocidad de visualización</strong></p>
-                        <div class="w3-row w3-padding-8 w3-margin-bottom">
-                            <div class="w3-col s6">
-                                <div class="w3-row">
-                                    <div class="w3-col s4">
-                                        <input class="w3-radio" type="radio" name="gender" value="female">
-                                        <label class="w3-validate">Rápido</label>
-                                    </div>
-                                    <div class="w3-col s4">
-                                        <input class="w3-radio" type="radio" name="gender" value="female">
-                                        <label class="w3-validate">Medio</label>
-                                    </div>
-                                    <div class="w3-col s4">
-                                        <input class="w3-radio" type="radio" name="gender" value="female">
-                                        <label class="w3-validate">Lento</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w3-col s4">
-                                <button class="w3-btn w3-round w3-border w3-white w3-padding-4">Iniciar</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-
-        </div>
-
-    </div>
+    
 
 </div>

@@ -66,7 +66,7 @@
         <li><a href="#tab_par_act-1">Síntesis</a></li>
         <li><a href="#tab_par_act-2">Plantación</a></li>
         <li><a href="#tab_par_act-3">Mantenimiento</a></li>
-        <li><a href="<?php echo base_url()."CobVeg/view_seguimiento/activa/plantacion/".$sec_id?>">Seguimiento</a></li>
+        <li><a href="<?php echo base_url()."CobVeg/view_seguimiento/activa/".$sec_id?>">Seguimiento</a></li>
         <li><a href="#tab_par_act-5">Beneficio Hidrologico</a></li>
     </ul>
     <!--Síntesis-->
@@ -137,10 +137,10 @@
                         <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_pendiente; ?>" />
                     </div>
                     <div class="w3-col s2">
-                        <label class="w3-label w3-text-black"><b>Método</b></label>
+                        <label class="w3-label w3-text-black"><b>Num.<br>Plantas</b></label>
                     </div>
                     <div class="w3-col s2">
-                        <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_metodo; ?>" />
+                        <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_numero; ?>" />
                     </div>
                     <div class="w3-col s2">
                         <label class="w3-label w3-text-black"><b>Dimensiones</b></label>
@@ -151,16 +151,16 @@
                 </div>
                 <div class="w3-row-padding w3-padding-8">
                     <div class="w3-col s2">
+                        <label class="w3-label w3-text-black"><b>Método</b></label>
+                    </div>
+                    <div class="w3-col s4">
+                        <textarea rows="2" class="w3-input w3-border w3-round w3-padding-4"><?php echo $plantacion->pla_metodo; ?></textarea>
+                    </div>
+                    <div class="w3-col s2">
                         <label class="w3-label w3-text-black"><b>Especies</b></label>
                     </div>
-                    <div class="w3-col s6">
+                    <div class="w3-col s4">
                         <textarea rows="2" class="w3-input w3-border w3-round w3-padding-4"><?php echo $plantacion->pla_especies; ?></textarea>
-                    </div>
-                    <div class="w3-col s2">
-                        <label class="w3-label w3-text-black"><b>Num.<br>Plantas</b></label>
-                    </div>
-                    <div class="w3-col s2">
-                        <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_numero; ?>" />
                     </div>
                 </div>
                 <div class="w3-row-padding w3-padding-8">

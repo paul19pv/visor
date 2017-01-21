@@ -278,6 +278,16 @@ function removeOverlay(map) {
     map.overlayMapTypes.removeAt(0);
     //map.overlayMapTypes.insertAt(0, overlayWMS);
 }
-function removeLayer(map){
-    map.overlayMapTypes.removeAt(0);   
+function removeLayer(){
+    if(map.overlayMapTypes.getLength()>1){
+        map.overlayMapTypes.removeAt(0);   
+    }
+    
+}
+function capa_actual(){
+    var nombre=null;
+    if(map.overlayMapTypes.getLength()>0){
+        nombre=map.overlayMapTypes.getAt(0).name;
+    }
+    return nombre;
 }

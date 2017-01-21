@@ -24,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost:8070/visor';
+//$config['base_url'] = 'http://infoagua-guayllabamba.ec/visor';
 
 /*
 |--------------------------------------------------------------------------

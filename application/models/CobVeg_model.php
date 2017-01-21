@@ -9,6 +9,7 @@ class CobVeg_model extends CI_Model {
     }
     public function get_unidades() {
         $this->db->order_by('uni_id', 'ASC');
+        $this->db->where('uni_cuenca !=','Sin cuenca');
         $query = $this->db->get('unidad');
         //var_dump($this->db->last_query());
         return $query->result();
@@ -35,14 +36,32 @@ class CobVeg_model extends CI_Model {
     public function get_plantacion($sec_id) {
         $this->db->where('pla_sector',$sec_id);
         $query = $this->db->get('plantacion');
-        //var_dump($this->db->last_query());
         return $query->row();
     }
-    public function get_capas_sim($fase,$actividad,$sector){
-        $this->db->select('sim_archivo, sim_periodo');
-        $array = array('sim_sector' => $sector, 'sim_fase' => $fase, 'sim_actividad' => $actividad);
+    public function get_pla_man($sec_id) {
+        $this->db->where('pla_sector',$sec_id);
+        $query = $this->db->get('pla_man');
+        return $query->row();
+    }
+    public function get_cercado($sec_id) {
+        $this->db->where('cer_sector',$sec_id);
+        $query = $this->db->get('cercado');
+        return $query->row();
+    }
+    
+    public function get_coberturas_sector($fase,$sector){
+        //$this->db->select('sim_archivo, sim_periodo');
+        $array = array('sim_sector' => $sector, 'sim_fase' => $fase);
         $this->db->where($array);
+        $this->db->order_by('sim_id', 'ASC');
         $query= $this->db->get('simulacion');
+        return $query->result_array();
+    }
+    public function get_coberturas_unidad($unidad,$demanda) {
+        $where= array('cap_unidad'=>$unidad,'cap_demanda'=>$demanda);
+        $this->db->where($where);
+        $this->db->order_by('cap_id', 'ASC');
+        $query= $this->db->get('capa');
         return $query->result_array();
     }
 
