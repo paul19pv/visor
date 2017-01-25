@@ -12,7 +12,6 @@
         <script src = "<?php echo base_url() ?>js/jquery.js"></script>
     <script src="<?php echo base_url() ?>js/jquery-ui.js"></script>
     <script src="<?php echo base_url() ?>js/js_mapa.js"></script>
-    <script src="<?php echo base_url() ?>js/geoxml/kmz/geoxml3.js"></script>
     <script src="<?php echo base_url() ?>js/js_wms.js"></script>
 
     <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyB5dESKyIaf42zTejjg4ClShw9rXq-_trM'></script>

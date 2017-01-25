@@ -1,10 +1,6 @@
-<script>
-    $(function(){
-        $("#tab_nec_act").tabs();
-    });
-</script>
+<script src="<?php echo base_url() ?>js/js_cap_sim.js"></script>
 <div class="w3-container w3-light-grey w3-round w3-padding-4">
-    <p><?php echo $introduccion;?></p>
+    <p><?php echo $introduccion; ?></p>
 </div>
 <br>
 <div id="tab_nec_act">
@@ -18,6 +14,8 @@
             <p>La cuenca del río Guayllabamba comprende un área total de 4711 km2 y está conformada por las unidades hídricas San Pedro, Pita, Guayllabamba Alto, Pisque y Guayllabamba Medio.</p>
         </div>
         <form class="w3-section">
+            <input type="hidden" id="txt_demanda" value="<?php echo $demanda ?>" >
+            <input type="hidden" id="txt_precipitacion" value="<?php echo $precipitacion ?>" >
             <table class="w3-table-all w3-centered">
                 <thead>
                     <tr class="w3-green">
@@ -64,7 +62,7 @@
                 </tbody>
             </table>
         </form>
-        
+
     </div>
     <!-- Napo-->
     <div id="tab_nec_act-2">    
@@ -119,6 +117,6 @@
                 </tbody>
             </table>
         </form>
-        
+
     </div>
 </div>

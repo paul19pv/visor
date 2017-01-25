@@ -72,5 +72,13 @@ class CobVeg_model extends CI_Model {
         $query= $this->db->get('view_modelo');
         return $query->result_array();
     }
+    //capas por escenario y precipitacion
+    public function get_coberturas_precipitacion($demanda,$precipitacion) {
+        $where= array('cap_demanda'=>$demanda,'cap_precipitacion'=>$precipitacion);
+        $this->db->where($where);
+        $this->db->order_by('cap_unidad', 'ASC');
+        $query= $this->db->get('capa');
+        return $query->result_array();
+    }
 
 }

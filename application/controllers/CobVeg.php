@@ -97,6 +97,11 @@ class CobVeg extends CI_Controller{
         $data=$this->cobveg->get_coberturas_sector($sector,$fase);
         echo json_encode($data);
     }
+    //devolver lista de capas en formato json
+    public function get_coberturas_precipitacion($demanda,$precipitacion) {
+        $data=$this->cobveg->get_coberturas_precipitacion($demanda,$precipitacion);
+        echo json_encode($data);
+    }
     //textos escenarios de la secion simulacion
     public function get_txt_esc($precipitacion) {
         switch ($precipitacion) {

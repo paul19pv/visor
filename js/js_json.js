@@ -3,11 +3,7 @@ var indicecapa = 0;
 var var_timer;
 var capa_actual = '';
 //var url_mapas = 'http://localhost:8070/visor/geojson/';
-var lista_coberturas = [
-    {id: "1", nombre: "ANT_BF_ACT", periodo: "Actual", layer: "ant_bf_act.json", agregado: false},
-    {id: "2", nombre: "ANT_BF_INC", periodo: "Incremento", layer: "ant_bf_inc.json", agregado: false},
-    {id: "3", nombre: "ANT_BF_DEC", periodo: "Decremento", layer: "ant_bf_dec.json", agregado: false}
-];
+var lista_coberturas = [];
 var listado_capas = [];
 
 $(function () {
@@ -30,6 +26,7 @@ $(function () {
     });
     //habilitar/deshabilitar checks precipitacion
     $("#chk_todos").click(conmutar_periodos);
+    
     $('#div_precipitacion input').click(precipitacion);
 });
 function load_geojson() {
@@ -175,6 +172,7 @@ function detenerAnimacion() {
     map.data.setStyle(animacion);
     //kml_layer.hideDocument(kml_layer.docs[indice_actual()]);
 }
+//activar/desactivar capas por el valor del check
 function precipitacion() {
     if ($(this).is(":checked"))
     {
