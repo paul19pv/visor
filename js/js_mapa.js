@@ -1,5 +1,6 @@
 var map;
 var uni_id;
+var url_mapas = 'http://localhost:8070/visor/geojson/';
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -0.2, lng: -78.85},
@@ -17,9 +18,14 @@ function initMap() {
      geoXml.parse("http://localhost:8070/visor/kml/ambito_2016_06.kml");
      */
     addLayer('fonag01:Ambito_FONAG');
+    //console.log(map.data);
+    
     //console.log(map.overlayMapTypes.getAt(0).name);
     //load_geojson();
 
+}
+function algo(data){
+    console.log(data);
 }
 
 

@@ -66,7 +66,7 @@
         <li><a href="#tab_par_act-1">Síntesis</a></li>
         <li><a href="#tab_par_act-2">Plantación</a></li>
         <li><a href="#tab_par_act-3">Mantenimiento</a></li>
-        <li><a href="<?php echo base_url()."CobVeg/view_seguimiento/activa/".$sec_id?>">Seguimiento</a></li>
+        <li><a href="<?php echo base_url()."CobVeg/view_seguimiento/".$sec_id."/activa"; ?>">Seguimiento</a></li>
         <li><a href="#tab_par_act-5">Beneficio Hidrologico</a></li>
     </ul>
     <!--Síntesis-->
@@ -277,19 +277,19 @@
                         <label class="w3-label w3-text-black"><b>Dimensiones</b></label>
                     </div>
                     <div class="w3-col s2">
-                        <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                        <input class="w3-input w3-border w3-round w3-padding-4" value="r 50cm" />
                     </div>
                     <div class="w3-col s2">
                         <label class="w3-label w3-text-black"><b>Podas</b></label>
                     </div>
                     <div class="w3-col s2">
-                        <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                        <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $pla_man->pla_podas=='f'?'NO':'SI'; ?>" />
                     </div>
                     <div class="w3-col s2">
                         <label class="w3-label w3-text-black"><b>Raleos</b></label>
                     </div>
                     <div class="w3-col s2">
-                        <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                        <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $pla_man->pla_raleos=='f'?'NO':'SI'; ?>" />
                     </div>
                 </div>
                 <div class="w3-row-padding w3-padding-8">
@@ -297,13 +297,13 @@
                         <label class="w3-label w3-text-black"><b>Replante<br>Especies</b></label>
                     </div>
                     <div class="w3-col s6">
-                        <textarea rows="2" class="w3-input w3-border w3-round w3-padding-4"><?php echo ''; ?></textarea>
+                        <textarea rows="2" class="w3-input w3-border w3-round w3-padding-4"><?php echo $pla_man->pla_especies; ?></textarea>
                     </div>
                     <div class="w3-col s2">
                         <label class="w3-label w3-text-black"><b>Num.<br>Plantas</b></label>
                     </div>
                     <div class="w3-col s2">
-                        <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                        <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $pla_man->pla_numero; ?>" />
                     </div>
                 </div>
                 <div class="w3-row-padding w3-padding-8">
@@ -356,13 +356,13 @@
                     <div class="w3-col s4">
                         <div class="w3-row w3-padding-8">
                             <div class="w3-col s4">
-                                <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                                <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $plantacion->pla_area; ?>" />
                             </div>
                             <div class="w3-col s2">
                                 <label class="w3-label w3-text-black">Ha</label>
                             </div>
                             <div class="w3-col s4">
-                                <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                                <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo round($plantacion->pla_area / 100, 2); ?>" />
                             </div>
                             <div class="w3-col s2">
                                 <label class="w3-label w3-text-black">Km<sup>2</sup></label>
@@ -379,13 +379,13 @@
                     <div class="w3-col s4">
                         <div class="w3-row w3-padding-8">
                             <div class="w3-col s4">
-                                <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                                <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $pla_man->pla_area; ?>" />
                             </div>
                             <div class="w3-col s2">
                                 <label class="w3-label w3-text-black">Ha</label>
                             </div>
                             <div class="w3-col s4">
-                                <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                                <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo round($pla_man->pla_area / 100, 2); ?>" />
                             </div>
                             <div class="w3-col s2">
                                 <label class="w3-label w3-text-black">Km<sup>2</sup></label>
@@ -401,7 +401,7 @@
 
         <p class="w3-text-green w3-padding-8"><strong>Interpretación del Estado del Sector</strong></p>
         <div class="w3-container w3-light-grey w3-round w3-padding-4">
-            <p><?php echo ''; ?><br></p>
+            <p><?php echo $pla_man->pla_texto; ?><br></p>
         </div>
         <div class="w3-display-container" style="height:40px;">
             <div class="w3-padding w3-display-topmiddle">

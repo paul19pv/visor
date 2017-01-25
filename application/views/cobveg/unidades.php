@@ -12,12 +12,12 @@
             map.setZoom(11);
         });
     });
-
+    //cargar la seccion sectores por ajax
     function sector(unidad) {
         $.ajax({
-            url: "/visor/CobVeg/view_sectores",
-            type: "POST",
-            data: "id=" + unidad,
+            url: "/visor/CobVeg/view_sectores/"+unidad,
+            type: "GET",
+            //data: "id=" + unidad,
             async: false,
             success: function (datos) {
                 $("#tabs-3").html(datos);
@@ -26,6 +26,7 @@
 
         return false;
     }
+    //cargar la seccion simulacion por ajax
     function simulacion(unidad) {
         $.ajax({
             url: "/visor/CobVeg/view_simulacion/" + unidad,
@@ -35,7 +36,6 @@
                 $("#tabs-7").html(datos);
             }
         });
-
         return false;
     }
 

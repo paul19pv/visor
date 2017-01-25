@@ -12,9 +12,9 @@
 
     function paramo(sec_id) {
         $.ajax({
-            url: "/visor/CobVeg/view_paramo",
-            type: "POST",
-            data: "sec_id=" + sec_id,
+            url: "/visor/CobVeg/view_paramo/"+sec_id,
+            type: "GET",
+            //data: "sec_id=" + sec_id,
             async: false,
             success: function (datos) {
                 $("#tabs-4").html(datos);
@@ -24,9 +24,9 @@
     }
     function bosque(sec_id) {
         $.ajax({
-            url: "/visor/CobVeg/view_bosque",
-            type: "POST",
-            data: "sec_id=" + sec_id,
+            url: "/visor/CobVeg/view_bosque/"+sec_id,
+            type: "GET",
+            //data: "sec_id=" + sec_id,
             async: false,
             success: function (datos) {
                 $("#tabs-5").html(datos);
@@ -36,9 +36,9 @@
     }
     function ripario(sec_id) {
         $.ajax({
-            url: "/visor/CobVeg/view_ripario",
-            type: "POST",
-            data: "sec_id=" + sec_id,
+            url: "/visor/CobVeg/view_ripario/"+sec_id,
+            type: "GET",
+            //data: "sec_id=" + sec_id,
             async: false,
             success: function (datos) {
                 $("#tabs-6").html(datos);

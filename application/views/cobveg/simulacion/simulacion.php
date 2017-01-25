@@ -11,13 +11,13 @@
             <p class="w3-padding-8"><strong>Seleccione a continuación las coberturas a presentar</strong></p>
             <div id="div_precipitacion" class="w3-row w3-padding-8">
                 <div class="w3-col s3">
-                    <input id="chk_precipitacion" class="w3-check" type="checkbox" value="todos">
+                    <input id="chk_todos" class="w3-check" type="checkbox" value="todos">
                     <label class="w3-validate">Todos las opciones</label>
                 </div>
                 <?php foreach ($datos as $value) {
                         ?>
                         <div class="w3-col s2">
-                            <input class="w3-check chk_periodos" type="checkbox" value="<?php echo $value['cap_nombre']?>" >
+                            <input class="w3-check chk_precipitacion" type="checkbox" value="<?php echo $value['cap_nombre']?>" >
                             <label class="w3-validate"><?php echo $value['cap_precipitacion']?></label>
                         </div>
                         <?php }
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="w3-col s4">
-                    <button type="button" id="btn_animacion" class="w3-btn w3-round w3-border w3-white w3-padding-4">Iniciar</button>
+                    <button type="button" id="btn_simulacion" class="w3-btn w3-round w3-border w3-white w3-padding-4">Iniciar</button>
                 </div>
             </div>
 

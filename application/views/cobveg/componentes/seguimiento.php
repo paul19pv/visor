@@ -1,16 +1,18 @@
 <script src="<?php echo base_url() ?>js/js_seguimiento.js"></script>
 <p class="w3-container w3-light-grey w3-round w3-padding-4">Esta sección nos permite visualizar cómo avanzan los procesos de restauración activa en el ecosistema páramo a través de la actividad plantación, mediante coberturas precargadas de los años 2008-2011, 2012, 2013, 2014 y 2015</p>
 <p class="w3-text-green w3-padding-8"><strong>A continuación puede encontrar las actividadesy resultados por subactividad de la fase seleccionada:</strong></p>
-<div id="tab_par_sim_act">
+<div id="tab_seguimiento">
     <ul>
-        <li><a href="#tab_par_sim_act-1">Plantación</a></li>
+        <li><a href="#tab_seguimiento-1">Plantación</a></li>
     </ul>
-    <div id="tab_par_sim_act-1">
+    <div id="tab_seguimiento-1">
 
         <form class="w3-light-grey w3-round">
+            <input type="hidden" id="txt_sector" value="<?php echo $sector;?>">
+            <input type="hidden" id="txt_fase" value="<?php echo $fase;?>">
             <div class="w3-container">
                 <p class="w3-padding-8"><strong>Seleccione las coberturas a presentar</strong></p>
-                <div id="periodos" class="w3-row w3-padding-8">
+                <div id="div_periodos" class="w3-row w3-padding-8">
                     <div class="w3-col s2">
                         <input id="chk_periodos" class="w3-check" type="checkbox" value="todos">
                         <label class="w3-validate">Todos los años</label>
@@ -18,8 +20,8 @@
                     <?php foreach ($datos as $value) {
                         ?>
                         <div class="w3-col s2">
-                            <input class="w3-check chk_periodos" type="checkbox" value="<?php echo $value['sim_periodo']?>" >
-                            <label class="w3-validate"><?php echo $value['sim_periodo']?></label>
+                            <input class="w3-check chk_periodos" type="checkbox" value="<?php echo $value['seg_nombre']?>" >
+                            <label class="w3-validate"><?php echo $value['seg_periodo']?></label>
                         </div>
 
                         <?php }

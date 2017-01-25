@@ -59,12 +59,11 @@
     </div>
 
     <!--informacion-->
-    <div id="div_info" class="w3-container w3-display-topmiddle w3-margin w3-white w3-round" style="display: none">
+    <div id="div_info" class="w3-container w3-display-right w3-margin w3-white w3-round" style="display: none">
     </div>
-    <div id="div_info" class="w3-container w3-display-bottommiddle w3-margin w3-white w3-round" style="display: none" >
-        <button type="button" id="ant_bf_act" onclick="conmutar_capa('ANT_BF_ACT')">Actual</button>
-        <button type="button" id="ant_bf_inc" onclick="conmutar_capa('ANT_BF_INC')">Incremento</button>
-        <button type="button" id="ant_bf_dec" onclick="conmutar_capa('ANT_BF_DEC')">Decremento</button>
+    <div id="div_capa" class="w3-container w3-display-right w3-margin w3-white w3-round" style="display: none">
+    </div>
+    <div id="div_leyenda" class="w3-container w3-display-bottommiddle w3-margin w3-white w3-round" style="display: none" >
     </div>
     <script>
         $(function () {
