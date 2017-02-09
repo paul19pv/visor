@@ -3,15 +3,12 @@ var indicecapa = 0;
 var var_timer;
 var capa_actual = '';
 
-var lista_coberturas = [
-    {id: "1", nombre: "ANT_BF_ACT", periodo: "Actual", layer: "ant_bf_act.json", agregado: false},
-    {id: "2", nombre: "ANT_BF_INC", periodo: "Incremento", layer: "ant_bf_inc.json", agregado: false},
-    {id: "3", nombre: "ANT_BF_DEC", periodo: "Decremento", layer: "ant_bf_dec.json", agregado: false}
-];
+var lista_coberturas = [];
 var listado_capas = [];
 
 $(function () {
     load_geojson();
+    $("#div_leyenda").hide();
     $("#tab_seguimiento").tabs();
     $("input[name=velocidad]").click(function () {
         velocidad = $(this).val();
@@ -32,7 +29,7 @@ $(function () {
     $('#div_periodos input').click(precipitacion);
 });
 function load_geojson() {
-    
+
     //centrar_mapa();
     get_coberturas_sector();
     //alert("algo");
@@ -64,44 +61,27 @@ function get_coberturas_sector() {
     lista_coberturas = [];
     var sector = $("#txt_sector").val();
     var fase = $("#txt_fase").val();
-    //console.log(sector, fase);
-    var capas = $.ajax({
-        url: "/visor/CobVeg/get_coberturas_sector/" + sector + "/" + fase,
-        type: "GET",
-        dataType: "json",
-        async: false}).responseText;
-    capas = JSON.parse(capas)
-    for (var i = 0; i < capas.length; i++) {
-        var item = {id: i + 1, nombre: capas[i].seg_nombre, periodo: capas[i].seg_periodo, layer: capas[i].seg_archivo, agregado: false}
-        lista_coberturas.push(item);
+    var ecosistema = $("#txt_ecosistema").val();
+    console.log(sector, fase);
+    if (sector !== undefined && fase !== undefined) {
+        var capas = $.ajax({
+            url: "/visor/CobVeg/get_coberturas_sector/" + sector + "/" + fase + "/" + ecosistema,
+            type: "GET",
+            dataType: "json",
+            async: false}).responseText;
+        capas = JSON.parse(capas)
+        for (var i = 0; i < capas.length; i++) {
+            var item = {id: i + 1, nombre: capas[i].seg_nombre, periodo: capas[i].seg_periodo, layer: capas[i].seg_archivo, agregado: false}
+            lista_coberturas.push(item);
+        }
     }
+
 }
 function style_bf(feature) {
     //var categoria = feature.getProperty('PRIORIDAD');
     var capa = feature.getProperty('CAPA');
-    var color = "#7cb4cf";
+    var color = "#FF8C00";
     var show_layer = false;
-    /*switch (capa) {
-     case 'Muy baja':
-     color = "#7cb4cf";
-     break;
-     case 'Baja':
-     color = "#b5c4b1";
-     break;
-     case 'Moderada':
-     color = "#fcfca2";
-     break;
-     case 'Alta':
-     color = "#fcba86";
-     break;
-     case 'Muy alta':
-     color = "#f27072";
-     break;
-     }*/
-    //console.log(capa,capa_actual);
-    /*if (capa === capa_actual) {
-        show_layer = true;
-    }*/
     var limite = listado_capas.length;
     for (var i = 0; i < limite; i++) {
         if (capa === listado_capas[i].nombre) {
@@ -113,44 +93,26 @@ function style_bf(feature) {
         strokeWeight: 1,
         strokeColor: color,
         visible: show_layer,
-        fillOpacity: 1
+        fillOpacity: 0.5
     };
 
 }
 function animacion(feature) {
     //var categoria = feature.getProperty('PRIORIDAD');
     var capa = feature.getProperty('CAPA');
-    var color = "#7cb4cf";
+    var color = "#FF8C00";
     var show_layer = false;
-    /*switch (capa) {
-     case 'Muy baja':
-     color = "#7cb4cf";
-     break;
-     case 'Baja':
-     color = "#b5c4b1";
-     break;
-     case 'Moderada':
-     color = "#fcfca2";
-     break;
-     case 'Alta':
-     color = "#fcba86";
-     break;
-     case 'Muy alta':
-     color = "#f27072";
-     break;
-     }*/
-    //console.log(capa,capa_actual);
     if (capa === capa_actual) {
         show_layer = true;
         info_cobertura(feature);
     }
-    
+
     return{
         fillColor: color,
         strokeWeight: 1,
         strokeColor: color,
         visible: show_layer,
-        fillOpacity: 1
+        fillOpacity: 0.5
     };
 
 }
@@ -171,11 +133,13 @@ function iniciarAnimacion() {
 function detenerAnimacion() {
     $("input.w3-check").prop("disabled", false);
     $("input.w3-radio").prop("disabled", false);
+    $("input.w3-check").prop("checked", false);
+    $("#chk_periodos").prop("checked", false);
     $("#div_info").hide();
     indicecapa = 0;
     clearInterval(var_timer);
-    console.log("numero de capas", map.overlayMapTypes.getLength());
     capa_actual = '';
+    eliminar_coberturas();
     map.data.setStyle(animacion);
     //kml_layer.hideDocument(kml_layer.docs[indice_actual()]);
 }
@@ -184,9 +148,9 @@ function precipitacion() {
     {
         if ($(this).val() !== 'todos') {
             capa_actual = $(this).val();
-            
         }
         conmutar_cobertura($(this).val(), true);
+        $("#div_leyenda").show();
     } else {
         capa_actual = '';
         conmutar_cobertura($(this).val(), false);
@@ -218,7 +182,7 @@ function activar_cobertura() {
                     //map.data.setStyle(animacion);
                     setTimeout(agregar_capa, 1000);
                     //info_cobertura(listado_capas[indicecapa]);
-                    map.data.setStyle(animacion);
+                    //map.data.setStyle(animacion);
                     console.log("capa agregada0", capa_actual);
                     verCobertura = true;
                 }
@@ -271,6 +235,15 @@ function actualizar_coberturas() {
         }
     }
 }
+//vaciar los array cuando terminne la animacion
+function eliminar_coberturas() {
+    listado_capas = [];
+    var num_coberturas = lista_coberturas.length;
+    for (var i = 0; i < num_coberturas; i++) {
+        lista_coberturas[i].agregado = false;
+    }
+    console.log("limpiar");
+}
 function conmutar_periodos() {
     $("input.chk_periodos").prop("disabled", this.checked);
     $("input.chk_periodos").prop("checked", this.checked);
@@ -287,6 +260,7 @@ function info_map(event) {
     $("#div_capa").append('<p><b>Unidad Hídrica: </b>' + capa.getProperty('U_HIDRICA') + '</p>');
     $("#div_capa").append('<p><b>Sector: </b>' + capa.getProperty('SECTOR') + '</p>');
     $("#div_capa").append('<p><b>Año: </b>' + parseFloat(capa.getProperty('ANIO')).toFixed(0) + '</p>');
+    $("#div_info").append('<div class="w3-container w3-padding-4"><img class="w3-border w3-padding" src="' + url_base + 'images/planta.JPG" width="100px"></div>');
 }
 function hide_info(event) {
     $("#div_capa").hide();
@@ -299,9 +273,27 @@ function info_cobertura(capa) {
     $("#div_info").append('<p><b>Área: </b>' + parseFloat(capa.getProperty('AREA_REG')).toFixed(2) + '</p>');
     $("#div_info").append('<p><b>Popietario: </b>' + capa.getProperty('PROPIETARI') + '</p>');
     $("#div_info").append('<p><b>Ecosistema: </b>' + capa.getProperty('ECOSISTEMA') + '</p>');
-    $("#div_info").append('<p><b>Tipo Recuperación: </b>' + capa.getProperty('T_RECUPERA') + '</p>');
-    $("#div_info").append('<p><b>Fase Recuperación: </b>' + capa.getProperty('FASE_RECUP') + '</p>');
+    $("#div_info").append('<p><b>Estrategia Recuperación: </b>' + capa.getProperty('T_RECUPERA') + '</p>');
+    $("#div_info").append('<p><b>Actividad de Recuperación: </b>' + capa.getProperty('FASE_RECUP') + '</p>');
     $("#div_info").append('<p><b>Unidad Hídrica: </b>' + capa.getProperty('U_HIDRICA') + '</p>');
     $("#div_info").append('<p><b>Sector: </b>' + capa.getProperty('SECTOR') + '</p>');
     $("#div_info").append('<p><b>Año: </b>' + parseFloat(capa.getProperty('ANIO')).toFixed(0) + '</p>');
+    $("#div_info").append('<p><b>Especies: </b>' + capa.getProperty('ESPECIES') + '</p>');
+    $("#div_info").append('<div class="w3-container w3-padding-4"><img class="w3-border w3-padding" src="' + url_base + 'images/planta.JPG" width="100px"></div>');
+}
+function leyenda() {
+    //console.log("leyenda");
+    //var legend = document.createElement('div');
+    var legend = document.getElementById('div_leyenda');
+    //legend.id = 'legend';
+    var content = [];
+    content.push('<h6>Periodo</h6>');
+    content.push('<div><div class="indicador muybaja"></div><div class="w3-validate">Muy Baja</div></div>');
+    content.push('<div><div class="indicador baja"></div><div class="w3-validate">Baja</div></div>');
+    content.push('<div><div class="indicador moderada"></div><div class="w3-validate">Moderada</div></div>');
+    content.push('<div><div class="indicador alta"></div><div class="w3-validate">Alta</div></div>');
+    content.push('<div><div class="indicador muyalta"></div><div class="w3-validate">Muy Alta</div></div>');
+    legend.innerHTML = content.join('');
+    legend.index = 1;
+    //map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
 }

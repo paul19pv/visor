@@ -35,36 +35,24 @@
                     <table class="w3-table-all w3-centered">
                         <thead>
                             <tr class="w3-green">
-                                <th rowspan="2">Técnica</th>
-                                <th>Marcado/Hoyado</th>
-                                <th>Plantado</th>
+                                <th rowspan="2">Técnica</th><th>Marcado/Hoyado</th><th>Plantado</th>
                             </tr>
                             <tr>
-                                <td>Distancia(m)</td>
-                                <td>Plantas</td>
+                                <td>Distancia(m)</td><td>Plantas</td>
                             </tr>
                         </thead>
                         <tbody>
-
                             <tr>
-                                <td>Árboles en Cultivos</td>
-                                <td>10x10</td>
-                                <td>100 x Ha</td>
+                                <td>Árboles en Cultivos</td><td>10x10</td><td>100 x Ha</td>
                             </tr>
                             <tr>
-                                <td>Cortinas<br>Rompevientos</td>
-                                <td>2x2</td>
-                                <td>500 x m</td>
+                                <td>Cortinas<br>Rompevientos</td><td>2x2</td><td>500 x m</td>
                             </tr>
                             <tr>
-                                <td>Cercas Vivas</td>
-                                <td>4x4</td>
-                                <td>200 x m</td>
+                                <td>Cercas Vivas</td><td>4x4</td><td>200 x m</td>
                             </tr>
                             <tr>
-                                <td>Árboles en Curvas<br>de Nivel</td>
-                                <td>3x3</td>
-                                <td>Varía</td>
+                                <td>Árboles en Curvas<br>de Nivel</td><td>3x3</td><td>Varía</td>
                             </tr>
                         </tbody>
                     </table>

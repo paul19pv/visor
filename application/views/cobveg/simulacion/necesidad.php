@@ -12,7 +12,7 @@
             },
             beforeActivate: function( event, ui ) {
                 //vaciar el panel antes de cargar el componente escenario
-                ui.oldPanel.html('');
+                ui.oldPanel.html('vacio');
             }
         });
         

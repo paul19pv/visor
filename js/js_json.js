@@ -8,7 +8,7 @@ var listado_capas = [];
 
 $(function () {
     load_geojson();
-
+    $("#div_leyenda").hide();
     $("input[name=velocidad]").click(function () {
         velocidad = $(this).val();
     });
@@ -26,11 +26,16 @@ $(function () {
     });
     //habilitar/deshabilitar checks precipitacion
     $("#chk_todos").click(conmutar_periodos);
-    
+
     $('#div_precipitacion input').click(precipitacion);
+    $(".ui-tabs-anchor").click(function(){
+        console.log("llego");
+        var active = $("#tab_nec_act" ).tabs( "option", "active" );
+        console.log(active);
+    });
 });
 function load_geojson() {
-    $("#chk_todos").prop("disabled", true);
+    //$("#chk_todos").prop("disabled", true);
     centrar_mapa();
     get_coberturas_unidad();
     for (var i = 0; i < lista_coberturas.length; i++) {
@@ -40,12 +45,12 @@ function load_geojson() {
     google.maps.event.addListenerOnce(map.data, 'addfeature', function () {
         //google.maps.event.trigger(document.getElementById('chk_todos'),'click');
         console.log("espera");
-        $("#chk_todos").prop("disabled", false);
+        //$("#chk_todos").prop("disabled", false);
     });
     map.data.setStyle(style_bf);
     map.data.addListener('mouseover', info_map);
     map.data.addListener('mouseout', hide_info);
-
+    leyenda();
 }
 //centrar el mapa de acuerdo a la unidad hídrica seleccionada
 function centrar_mapa() {
@@ -55,8 +60,18 @@ function centrar_mapa() {
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: latitud, lng: longitud},
-        zoom: 11,
-        mapTypeId: google.maps.MapTypeId.TERRAIN
+        zoom: 12,
+        mapTypeId: google.maps.MapTypeId.HYBRID,
+        mapTypeControlOptions: {
+            mapTypeIds: [
+                google.maps.MapTypeId.ROADMAP,
+                google.maps.MapTypeId.TERRAIN,
+                google.maps.MapTypeId.SATELLITE,
+                google.maps.MapTypeId.HYBRID
+            ],
+            //style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+            position: google.maps.ControlPosition.LEFT_BOTTOM
+        }
     });
     addLayer('fonag01:Ambito_FONAG');
 }
@@ -72,7 +87,7 @@ function get_coberturas_unidad() {
         async: false}).responseText;
     capas = JSON.parse(capas)
     for (var i = 0; i < capas.length; i++) {
-        var item = {id: i + 1, nombre: capas[i].cap_nombre, periodo: capas[i].cap_precipitacion, layer: capas[i].cap_layer, agregado: false}
+        var item = {id: i + 1, nombre: capas[i].cap_nombre, periodo: capas[i].cap_precipitacion, layer: capas[i].cap_layer, agregado: false, valor:capas[i].cap_valor, demanda:capas[i].cap_demanda}
         lista_coberturas.push(item);
     }
 }
@@ -109,7 +124,7 @@ function style_bf(feature) {
         strokeWeight: 1,
         strokeColor: color,
         visible: show_layer,
-        fillOpacity: 1
+        fillOpacity: 0.5
     };
 
 }
@@ -137,26 +152,26 @@ function animacion(feature) {
     }
     if (capa === capa_actual) {
         show_layer = true;
-        //info_cobertura(feature)
+        //info_cobertura(capa_actual)
     }
     return{
         fillColor: color,
         strokeWeight: 1,
         strokeColor: color,
         visible: show_layer,
-        fillOpacity: 1
+        fillOpacity: 0.5
     };
 
 }
 function iniciarAnimacion() {
     $("input.w3-check").prop("disabled", true);
     $("input.w3-radio").prop("disabled", true);
-    //$("#div_info").show();
+    $("#div_info").show();
     capa_actual = listado_capas[0].nombre;
     map.data.setStyle(animacion);
     console.log("capa agregada ini", capa_actual);
     indicecapa = 1;
-    //info_cobertura(listado_capas[0]);
+    info_cobertura(listado_capas[0]);
 
     var_timer = setInterval(activar_cobertura, velocidad);
 
@@ -164,7 +179,9 @@ function iniciarAnimacion() {
 function detenerAnimacion() {
     $("input.w3-check").prop("disabled", false);
     $("input.w3-radio").prop("disabled", false);
-    //$("#div_info").hide();
+    $("input.w3-check").prop("checked", false);
+    $("#chk_todos").prop("checked",false);
+    $("#div_info").hide();
     indicecapa = 0;
     clearInterval(var_timer);
     console.log("numero de capas", map.overlayMapTypes.getLength());
@@ -176,14 +193,17 @@ function detenerAnimacion() {
 function precipitacion() {
     if ($(this).is(":checked"))
     {
-
         if ($(this).val() !== 'todos') {
             capa_actual = $(this).val();
         }
         conmutar_cobertura($(this).val(), true);
+        $("#div_leyenda").show();
     } else {
         capa_actual = '';
         conmutar_cobertura($(this).val(), false);
+        if (listado_capas.length <= 1) {
+            $("#div_leyenda").hide();
+        }
     }
     actualizar_coberturas();
     map.data.setStyle(style_bf);
@@ -211,7 +231,7 @@ function activar_cobertura() {
                     capa_actual = listado_capas[indicecapa].nombre;
                     //map.data.setStyle(animacion);
                     setTimeout(agregar_capa, 1000);
-                    //info_cobertura(listado_capas[indicecapa]);
+                    info_cobertura(listado_capas[indicecapa]);
                     map.data.setStyle(animacion);
                     console.log("capa agregada0", capa_actual);
                     verCobertura = true;
@@ -220,7 +240,7 @@ function activar_cobertura() {
                 capa_actual = listado_capas[indicecapa].nombre;
                 //map.data.setStyle(style_bf);
                 setTimeout(agregar_capa, 1000);
-                //info_cobertura(listado_capas[indicecapa]);
+                info_cobertura(listado_capas[indicecapa]);
                 console.log("capa agregada1", capa_actual);
                 verCobertura = true;
             }
@@ -282,7 +302,25 @@ function hide_info(event) {
     $("#div_capa").html('');
 }
 function info_cobertura(capa) {
-    $("#div_info").append('<p><b>Prioridad: </b>' + capa.getProperty('PRIORIDAD') + '</p>');
-    $("#div_info").append('<p><b>Area: </b>' + capa.getProperty('Area_ha') + '</p>');
-    $("#div_info").append('<p><b>Vegetación: </b>' + capa.getProperty('CLASE') + '</p>');
+    console.log(capa.nombre);
+    $("#div_info").html('');
+    $("#div_info").append('<p><b>Capa: </b>' + capa.valor + '</p>');
+    $("#div_info").append('<p><b>Escenario: </b>' + capa.demanda + '</p>');
+    $("#div_info").append('<p><b>Precipitacion: </b>' + capa.periodo + '</p>');
+}
+function leyenda() {
+    //console.log("leyenda");
+    //var legend = document.createElement('div');
+   var legend = document.getElementById('div_leyenda');
+    //legend.id = 'legend';
+    var content = [];
+    content.push('<h6>Prioridades</h6>');
+    content.push('<div class="w3-container w3-padding-0"><div class="indicador muybaja"></div><div class="w3-left">Muy Baja</div></div>');
+    content.push('<div class="w3-container w3-padding-0"><div class="indicador baja"></div><div class="w3-left">Baja</div></div>');
+    content.push('<div class="w3-container w3-padding-0"><div class="indicador moderada"></div><div class="w3-left">Moderada</div></div>');
+    content.push('<div class="w3-container w3-padding-0"><div class="indicador alta"></div><div class="w3-left">Alta</div></div>');
+    content.push('<div class="w3-container w3-padding-0"><div class="indicador muyalta"></div><div class="w3-left">Muy Alta</div></div>');
+    legend.innerHTML = content.join('');
+    legend.index = 1;
+    //map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
 }

@@ -6,7 +6,7 @@
             $("#tabs").tabs("option", "active", 2);
             uni_id = $(this).attr('id');
             sector(uni_id);
-            simulacion(uni_id);
+            //simulacion(uni_id);
             var latitud = $("#lat" + uni_id).val(), longitud = $("#lon" + uni_id).val();
             map.setCenter({lat: parseFloat(latitud), lng: parseFloat(longitud)});
             map.setZoom(11);
@@ -26,19 +26,6 @@
 
         return false;
     }
-    //cargar la seccion simulacion por ajax
-    function simulacion(unidad) {
-        $.ajax({
-            url: "/visor/CobVeg/view_simulacion/" + unidad,
-            type: "GET",
-            async: false,
-            success: function (datos) {
-                $("#tabs-7").html(datos);
-            }
-        });
-        return false;
-    }
-
 </script>
 <div class="w3-container w3-light-grey w3-round w3-padding-4">
     <p>El módulo de Cobertura Vegetal se enfoca en sectores específicos de las Cuencas Hídricas Guayllabamba, Alto, Medio, San Pedro, Pita y Pisque, y Napo, Oyacachi, Chapli Grande, Papallacta y Antisana, que poseen ecosistemas de páramo y bosque altoandino que son importantes zonas de recarga hídrico. Estos sectores albergan una gran diversidad biológica, pero a su vez presentan una gran vulnerabilidad ante cualquier presión, ya sea debida a agentes naturales o a una inadecuada interacción del ser humano con el medio.</p>

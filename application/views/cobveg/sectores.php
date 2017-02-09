@@ -1,18 +1,18 @@
 <script>
     $(function () {
         $(".sectores").click(function () {
+            sec_id = $(this).attr('id');
             $("#tabs").tabs("option", "disabled", []);
             $("#tabs").tabs("option", "active", 3);
-            var id = $(this).attr('id');
-            paramo(id);
-            bosque(id);
-            ripario(id);
+            var latitud = $("#sec_lat" + sec_id).val(), longitud = $("#sec_lon" + sec_id).val();
+            map.setCenter({lat: parseFloat(latitud), lng: parseFloat(longitud)});
+            map.setZoom(13);
         });
     });
 
     function paramo(sec_id) {
         $.ajax({
-            url: "/visor/CobVeg/view_paramo/"+sec_id,
+            url: "/visor/CobVeg/view_paramo/" + sec_id,
             type: "GET",
             //data: "sec_id=" + sec_id,
             async: false,
@@ -24,7 +24,7 @@
     }
     function bosque(sec_id) {
         $.ajax({
-            url: "/visor/CobVeg/view_bosque/"+sec_id,
+            url: "/visor/CobVeg/view_bosque/" + sec_id,
             type: "GET",
             //data: "sec_id=" + sec_id,
             async: false,
@@ -36,7 +36,7 @@
     }
     function ripario(sec_id) {
         $.ajax({
-            url: "/visor/CobVeg/view_ripario/"+sec_id,
+            url: "/visor/CobVeg/view_ripario/" + sec_id,
             type: "GET",
             //data: "sec_id=" + sec_id,
             async: false,
@@ -62,12 +62,14 @@
                     <div class="w3-rest">
                         <h5><?php echo $row->sec_nombre ?></h5>
                         <p><?php echo $row->sec_texto ?></p>
+                        <input type="hidden" id="<?php echo "sec_lat" . $row->sec_id ?>" value="<?php echo $row->sec_latitud ?>" />
+                        <input type="hidden" id="<?php echo "sec_lon" . $row->sec_id ?>" value="<?php echo $row->sec_longitud ?>" />
                     </div>
                 </div>
             <?php endforeach; ?>
 
         </div>
-    <?php
+        <?php
     }
     else {
         ?>

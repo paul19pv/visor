@@ -2,7 +2,7 @@
 p{
     text-align: justify;
     font-size: 12px;
-    
+
 }
 h1,h2,h3,h4,h5,h6{
     font-weight: bold;
@@ -18,3 +18,40 @@ h1,h2,h3,h4,h5,h6{
 form{
     font-size: 12px;   
 }
+/*Estilos para la leyenda*/
+#legend {
+    background: #FFF;
+    padding: 10px;
+    margin: 5px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+}
+.indicador {
+    border: 1px solid;
+    height: 12px;
+    width: 12px;
+    margin-right: 3px;
+    margin-top: 6px;
+    float: left;
+}
+.muyalta {
+    background: #f27072;
+}
+
+.alta {
+    background: #fcba86;
+}
+
+.moderada {
+    background: #fcfca2;
+}
+
+.baja {
+    background: #b5c4b1;
+}
+
+.muybaja {
+    background: #7cb4cf;
+}
+
+.w3-check,.w3-radio{zoom: 0.7}

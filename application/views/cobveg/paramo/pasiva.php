@@ -23,99 +23,85 @@
     </div>
     <!--Cercado-->
     <div id="tab_par_pas-2">
+
         <p class="w3-container w3-light-grey w3-round w3-padding-4">Actualmente el FONAG utiliza dos tipos de cercado; el primero un cercado eléctrico, que utiliza paneles solares, dos líneas alambre de acero y postes de plástico reciclado cada 30 m o menos dependiendo de la topología del sitio; y, el cercado tradicional con 4 líneas de alambre de púas y postes de pambil.</p>
         <div class="w3-panel">
             <div class="w3-display-container w3-col s12" style="height:155px;">
                 <div class="w3-display-topmiddle">
                     <table class="w3-table-all w3-centered">
                         <thead>
-                            <tr class="w3-green">
-                                <th colspan="2">Cerca</th>
-                                <th>Marcado</th>
-                                <th>Hoyado</th>
-                            </tr>
+                            <tr class="w3-green"><th colspan="2">Cerca</th><th>Marcado</th><th>Hoyado</th></tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Tipo</td>
-                                <td>Número de<br>Líneas</td>
-                                <td>Distancia(m)</td>
-                                <td>Dimensiones (cm)</td>
-                            </tr>
-                            <tr>
-                                <td>Eléctrica</td>
-                                <td>2</td>
-                                <td>25</td>
-                                <td rowspan="2">30x30x50</td>
-                            </tr>
-                            <tr>
-                                <td>Alambre de<br>Púas</td>
-                                <td>4</td>
-                                <td>3</td>
-                            </tr>
+                            <tr><td>Tipo</td><td>Número de<br>Líneas</td><td>Distancia(m)</td><td>Dimensiones (cm)</td></tr>
+                            <tr><td>Eléctrica</td><td>2</td><td>25</td><td rowspan="2">30x30x50</td></tr>
+                            <tr><td>Alambre de<br>Púas</td><td>4</td><td>3</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
         <p class="w3-text-green w3-padding-8"><strong> El estado de recuperación del sector seleccionado es el siguiente:</strong></p>
-
-        <div class="w3-light-grey w3-round w3-padding-8">
-            <form>
-                <div class="w3-row-padding w3-padding-8">
-                    <div class="w3-col s4">
-                        <label class="w3-label w3-text-black"><b>Longitud de Cerca</b></label>
-                    </div>
-                    <div class="w3-col s2">
-                        <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
-                    </div>
-                    <div class="w3-col s2">
-                        <label class="w3-label w3-text-black">m</label>
-                    </div>
-                    <div class="w3-col s2">
-                        <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
-                    </div>
-                    <div class="w3-col s2">
-                        <label class="w3-label w3-text-black">Km</label>
-                    </div>
-                </div>
-                <div class="w3-row-padding w3-padding-8">
-                    <div class="w3-col s4">
-                        <label class="w3-label w3-text-black"><b>Área Cercada</b></label>
-                    </div>
-                    <div class="w3-col s2">
-                        <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
-                    </div>
-                    <div class="w3-col s2">
-                        <label class="w3-label w3-text-black">Ha</label>
-                    </div>
-                    <div class="w3-col s2">
-                        <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
-                    </div>
-                    <div class="w3-col s2">
-                        <label class="w3-label w3-text-black">Km<sup>2</sup></label>
-                    </div>
-                </div>
-
-
-            </form>
-        </div>
-
-        <p class="w3-text-green w3-padding-8"><strong>Interpretación del Estado del Sector</strong></p>
-        <div class="w3-container w3-light-grey w3-round w3-padding-4">
-            <p><?php echo ''; ?><br></p>
-        </div>
-        <div class="w3-display-container" style="height:40px;">
-            <div class="w3-padding w3-display-topmiddle">
+        <?php if (count($cercado) > 0) {
+            ?>
+            <div class="w3-light-grey w3-round w3-padding-8">
                 <form>
-                    <div class="w3-row">
-                        <input class="w3-check" type="checkbox">
-                        <label class="w3-validate">Ver mapa</label>
+                    <div class="w3-row-padding w3-padding-8">
+                        <div class="w3-col s4">
+                            <label class="w3-label w3-text-black"><b>Longitud de Cerca</b></label>
+                        </div>
+                        <div class="w3-col s2">
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $cercado->cer_longitud; ?>" />
+                        </div>
+                        <div class="w3-col s2">
+                            <label class="w3-label w3-text-black">m</label>
+                        </div>
+                        <div class="w3-col s2">
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo round($cercado->cer_longitud / 100, 2); ?>" />
+                        </div>
+                        <div class="w3-col s2">
+                            <label class="w3-label w3-text-black">Km</label>
+                        </div>
                     </div>
+                    <div class="w3-row-padding w3-padding-8">
+                        <div class="w3-col s4">
+                            <label class="w3-label w3-text-black"><b>Área Cercada</b></label>
+                        </div>
+                        <div class="w3-col s2">
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $cercado->cer_area; ?>" />
+                        </div>
+                        <div class="w3-col s2">
+                            <label class="w3-label w3-text-black">Ha</label>
+                        </div>
+                        <div class="w3-col s2">
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo round($cercado->cer_area / 100, 2); ?>" />
+                        </div>
+                        <div class="w3-col s2">
+                            <label class="w3-label w3-text-black">Km<sup>2</sup></label>
+                        </div>
+                    </div>
+
+
                 </form>
             </div>
-        </div>
+
+            <p class="w3-text-green w3-padding-8"><strong>Interpretación del Estado del Sector</strong></p>
+            <div class="w3-container w3-light-grey w3-round w3-padding-4">
+                <p><?php echo $cercado->cer_texto; ?><br></p>
+            </div>
+            <div class="w3-display-container" style="height:40px;">
+                <div class="w3-padding w3-display-topmiddle">
+                    <form>
+                        <div class="w3-row">
+                            <input class="w3-check" type="checkbox">
+                            <label class="w3-validate">Ver mapa</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        <?php }
+        ?>
+
 
     </div>
     <!--Mantenimiento-->
