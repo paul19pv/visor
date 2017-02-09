@@ -62,7 +62,7 @@ function get_coberturas_sector() {
     var sector = $("#txt_sector").val();
     var fase = $("#txt_fase").val();
     var ecosistema = $("#txt_ecosistema").val();
-    console.log(sector, fase);
+    console.log(sector, fase, ecosistema);
     if (sector !== undefined && fase !== undefined) {
         var capas = $.ajax({
             url: "/visor/CobVeg/get_coberturas_sector/" + sector + "/" + fase + "/" + ecosistema,
@@ -71,7 +71,7 @@ function get_coberturas_sector() {
             async: false}).responseText;
         capas = JSON.parse(capas)
         for (var i = 0; i < capas.length; i++) {
-            var item = {id: i + 1, nombre: capas[i].seg_nombre, periodo: capas[i].seg_periodo, layer: capas[i].seg_archivo, agregado: false}
+            var item = {id: i + 1, nombre: capas[i].seg_nombre, periodo: capas[i].seg_periodo, layer: capas[i].seg_archivo, ecosistema:capas[i].seg_ecosistema, agregado: false}
             lista_coberturas.push(item);
         }
     }
@@ -80,11 +80,14 @@ function get_coberturas_sector() {
 function style_bf(feature) {
     //var categoria = feature.getProperty('PRIORIDAD');
     var capa = feature.getProperty('CAPA');
+    var ecosistema = feature.getProperty('ECOSISTEMA').toLowerCase()==='paramo'?'paramo':'bosque';
+    console.log("valores",capa,ecosistema);
     var color = "#FF8C00";
     var show_layer = false;
     var limite = listado_capas.length;
     for (var i = 0; i < limite; i++) {
-        if (capa === listado_capas[i].nombre) {
+        console.log("capa",listado_capas[i].nombre,listado_capas[i].ecosistema)
+        if (capa === listado_capas[i].nombre && ecosistema===listado_capas[i].ecosistema) {
             show_layer = true;
         }
     }
@@ -260,7 +263,8 @@ function info_map(event) {
     $("#div_capa").append('<p><b>Unidad Hídrica: </b>' + capa.getProperty('U_HIDRICA') + '</p>');
     $("#div_capa").append('<p><b>Sector: </b>' + capa.getProperty('SECTOR') + '</p>');
     $("#div_capa").append('<p><b>Año: </b>' + parseFloat(capa.getProperty('ANIO')).toFixed(0) + '</p>');
-    $("#div_info").append('<div class="w3-container w3-padding-4"><img class="w3-border w3-padding" src="' + url_base + 'images/planta.JPG" width="100px"></div>');
+    $("#div_capa").append('<p><b>Especies: </b>' + capa.getProperty('ESPECIES') + '</p>');
+    $("#div_capa").append('<div class="w3-container w3-padding-4"><img class="w3-border w3-padding" src="' + url_base + 'images/planta.JPG" width="100px"></div>');
 }
 function hide_info(event) {
     $("#div_capa").hide();

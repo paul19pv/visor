@@ -37,13 +37,13 @@
                             <label class="w3-label w3-text-black"><b>Longitud de Cerca</b></label>
                         </div>
                         <div class="w3-col s2">
-                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $cercado->cer_longitud; ?>" />
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $cercado->cer_longitud; ?>" readonly="readonly"/>
                         </div>
                         <div class="w3-col s2">
                             <label class="w3-label w3-text-black">m</label>
                         </div>
                         <div class="w3-col s2">
-                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo round($cercado->cer_longitud / 100, 2); ?>" />
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo round($cercado->cer_longitud / 100, 2); ?>" readonly="readonly"/>
                         </div>
                         <div class="w3-col s2">
                             <label class="w3-label w3-text-black">Km</label>
@@ -54,13 +54,13 @@
                             <label class="w3-label w3-text-black"><b>Área Cercada</b></label>
                         </div>
                         <div class="w3-col s2">
-                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $cercado->cer_area; ?>" />
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo $cercado->cer_area; ?>" readonly="readonly"/>
                         </div>
                         <div class="w3-col s2">
                             <label class="w3-label w3-text-black">Ha</label>
                         </div>
                         <div class="w3-col s2">
-                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo round($cercado->cer_area / 100, 2); ?>" />
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo round($cercado->cer_area / 100, 2); ?>" readonly="readonly"/>
                         </div>
                         <div class="w3-col s2">
                             <label class="w3-label w3-text-black">Km<sup>2</sup></label>
@@ -104,13 +104,13 @@
                             <label class="w3-label w3-text-black"><b>Longitud Cercada</b></label>
                         </div>
                         <div class="w3-col s2">
-                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" readonly="readonly"/>
                         </div>
                         <div class="w3-col s2">
                             <label class="w3-label w3-text-black">m</label>
                         </div>
                         <div class="w3-col s2">
-                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" readonly="readonly"/>
                         </div>
                         <div class="w3-col s2">
                             <label class="w3-label w3-text-black">Km</label>
@@ -121,13 +121,13 @@
                             <label class="w3-label w3-text-black"><b>Longitud Mantenida</b></label>
                         </div>
                         <div class="w3-col s2">
-                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" readonly="readonly"/>
                         </div>
                         <div class="w3-col s2">
                             <label class="w3-label w3-text-black">m</label>
                         </div>
                         <div class="w3-col s2">
-                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" readonly="readonly"/>
                         </div>
                         <div class="w3-col s2">
                             <label class="w3-label w3-text-black">Km</label>
@@ -138,13 +138,13 @@
                             <label class="w3-label w3-text-black"><b>Área Cercada</b></label>
                         </div>
                         <div class="w3-col s2">
-                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" readonly="readonly"/>
                         </div>
                         <div class="w3-col s2">
                             <label class="w3-label w3-text-black">Ha</label>
                         </div>
                         <div class="w3-col s2">
-                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" readonly="readonly"/>
                         </div>
                         <div class="w3-col s2">
                             <label class="w3-label w3-text-black">Km<sup>2</sup></label>
@@ -155,13 +155,13 @@
                             <label class="w3-label w3-text-black"><b>Área Mantenida</b></label>
                         </div>
                         <div class="w3-col s2">
-                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" readonly="readonly"/>
                         </div>
                         <div class="w3-col s2">
                             <label class="w3-label w3-text-black">Ha</label>
                         </div>
                         <div class="w3-col s2">
-                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" />
+                            <input class="w3-input w3-border w3-round w3-padding-4" value="<?php echo ''; ?>" readonly="readonly"/>
                         </div>
                         <div class="w3-col s2">
                             <label class="w3-label w3-text-black">Km<sup>2</sup></label>

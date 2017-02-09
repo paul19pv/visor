@@ -10,10 +10,15 @@
         <div class="w3-container">
             <p class="w3-padding-8"><strong>Seleccione las coberturas a presentar</strong></p>
             <div id="div_periodos" class="w3-row w3-padding-8">
-                <div class="w3-col s2">
-                    <input id="chk_periodos" class="w3-check" type="checkbox" value="todos">
-                    <label class="w3-validate">Todos los años</label>
-                </div>
+                <?php if (count($datos) > 1) {
+                    ?>
+                    <div class="w3-col s2">
+                        <input id="chk_periodos" class="w3-check" type="checkbox" value="todos">
+                        <label class="w3-validate">Todos los años</label>
+                    </div>
+                <?php }
+                ?>
+
                 <?php foreach ($datos as $value) {
                     ?>
                     <div class="w3-col s2">
@@ -23,28 +28,33 @@
                 <?php }
                 ?>
             </div>
-            <p class="w3-padding-8"><strong>Escoja la velocidad de visualización</strong></p>
-            <div class="w3-row w3-padding-8 w3-margin-bottom">
-                <div class="w3-col s6">
-                    <div class="w3-row">
-                        <div class="w3-col s4">
-                            <input class="w3-radio" type="radio" name="velocidad" value="2000">
-                            <label class="w3-validate">Rápido</label>
-                        </div>
-                        <div class="w3-col s4">
-                            <input class="w3-radio" type="radio" name="velocidad" value="4000">
-                            <label class="w3-validate">Medio</label>
-                        </div>
-                        <div class="w3-col s4">
-                            <input class="w3-radio" type="radio" name="velocidad" value="6000">
-                            <label class="w3-validate">Lento</label>
+            <?php if (count($datos) > 1) {
+                ?>
+                <p class="w3-padding-8"><strong>Escoja la velocidad de visualización</strong></p>
+                <div class="w3-row w3-padding-8 w3-margin-bottom">
+                    <div class="w3-col s6">
+                        <div class="w3-row">
+                            <div class="w3-col s4">
+                                <input class="w3-radio" type="radio" name="velocidad" value="2000">
+                                <label class="w3-validate">Rápido</label>
+                            </div>
+                            <div class="w3-col s4">
+                                <input class="w3-radio" type="radio" name="velocidad" value="4000">
+                                <label class="w3-validate">Medio</label>
+                            </div>
+                            <div class="w3-col s4">
+                                <input class="w3-radio" type="radio" name="velocidad" value="6000">
+                                <label class="w3-validate">Lento</label>
+                            </div>
                         </div>
                     </div>
+                    <div class="w3-col s4">
+                        <button id="btn_animacion" type="button" class="w3-btn w3-round w3-border w3-white w3-padding-4">Iniciar</button>
+                    </div>
                 </div>
-                <div class="w3-col s4">
-                    <button id="btn_animacion" type="button" class="w3-btn w3-round w3-border w3-white w3-padding-4">Iniciar</button>
-                </div>
-            </div>
+                <?php }
+            ?>
+
         </div>
     </form>
 

@@ -80,6 +80,11 @@
             });
             return false;
         }
+        function refresh_map(){
+            var latitud = $("#sec_lat" + sec_id).val(), longitud = $("#sec_lon" + sec_id).val();
+            map.setCenter({lat: parseFloat(latitud), lng: parseFloat(longitud)});
+            map.setZoom(13);
+        }
 
     });
 
