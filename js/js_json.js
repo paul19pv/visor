@@ -2,9 +2,6 @@ var velocidad = 0;
 var indicecapa = 0;
 var var_timer;
 var capa_actual = '';
-//var url_mapas = 'http://localhost:8070/visor/geojson/';
-var lista_coberturas = [];
-var listado_capas = [];
 
 $(function () {
     load_geojson();

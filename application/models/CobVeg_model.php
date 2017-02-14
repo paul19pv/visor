@@ -66,6 +66,15 @@ class CobVeg_model extends CI_Model {
         $query= $this->db->get('seguimiento');
         return $query->result_array();
     }
+    //capas por unidad
+    public function get_recuperacion_unidad(){
+        //$this->db->select('sim_archivo, sim_periodo');
+        //$array = array('sec_unidad' => $unidad);
+        //$this->db->where($array);
+        $this->db->order_by('seg_id', 'ASC');
+        $query= $this->db->get('view_seguimiento');
+        return $query->result_array();
+    }
     //capas por unidad y demanda
     public function get_coberturas_unidad($unidad,$demanda) {
         $where= array('cap_unidad'=>$unidad,'cap_demanda'=>$demanda);

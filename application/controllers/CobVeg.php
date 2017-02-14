@@ -144,15 +144,20 @@ class CobVeg extends CI_Controller {
         echo json_encode($data);
     }
 
-    //devolver lista de capas en formato json
+    //devolver lista de capas de recuperacion en formato json
     public function get_coberturas_sector($sector, $fase,$ecosistema) {
         $data = $this->cobveg->get_coberturas_sector($sector, $fase,$ecosistema);
         echo json_encode($data);
     }
 
-    //devolver lista de capas en formato json
+    //devolver lista de capas del modelo por demanda, precipitacion y cuenca en formato json
     public function get_coberturas_precipitacion($demanda, $precipitacion, $cuenca) {
         $data = $this->cobveg->get_coberturas_precipitacion($demanda, $precipitacion, $cuenca);
+        echo json_encode($data);
+    }
+    //devolver lista de capas de recupracion por unidad en formato json
+    public function get_recuperacion_unidad() {
+        $data = $this->cobveg->get_recuperacion_unidad();
         echo json_encode($data);
     }
 

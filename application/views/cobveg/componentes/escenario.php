@@ -25,8 +25,9 @@
                         <th colspan="2">Moderada</th>
                         <th colspan="2">Alta</th>
                         <th colspan="2">Muy Alta</th>
-                        <th rowspan="2">Ver Mapa</th>
-                        <th rowspan="2">Ver Imagen</th>
+                        <th rowspan="2">Modelo</th>
+                        <th rowspan="2">Recuperación</th>
+                        <!--<th rowspan="2">Ver Imagen</th>-->
                     </tr>
                     <tr>
                         <th>Area (Ha)</th>
@@ -56,7 +57,7 @@
                             <td><?php echo $item['mod_area_ma'] ?></td>
                             <td><?php echo $item['mod_por_ma'] ?></td>
                             <td><input class="w3-check chk_unidades" type="checkbox" value="<?php echo $item['cap_nombre'] ?>"></td>
-                            <td><a href="<?php echo base_url() . "CobVeg/view_info_esc/" . $item['uni_id'] . "/" . $demanda . "/" . $precipitacion ?>">Click</a></td>
+                            <td><input class="w3-check chk_recuperacion" type="checkbox" value="<?php echo $item['uni_id'] ?>"></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -79,8 +80,8 @@
                         <th colspan="2">Moderada</th>
                         <th colspan="2">Alta</th>
                         <th colspan="2">Muy Alta</th>
-                        <th rowspan="2">Ver Mapa</th>
-                        <th rowspan="2">Ver Imagen</th>
+                        <th rowspan="2">Modelo</th>
+                        <th rowspan="2">Recuperación</th>
                     </tr>
                     <tr>
                         <th>Area (Ha)</th>
@@ -110,7 +111,7 @@
                             <td><?php echo $item['mod_area_ma'] ?></td>
                             <td><?php echo $item['mod_por_ma'] ?></td>
                             <td><input class="w3-check chk_unidades" type="checkbox" value="<?php echo $item['cap_nombre'] ?>"></td>
-                            <td><a href="<?php echo base_url() . "CobVeg/view_info_esc/" . $item['uni_id'] . "/" . $demanda . "/" . $precipitacion ?>">Click</a></td>
+                            <td><input class="w3-check chk_recuperacion" type="checkbox" value="<?php echo $item['uni_id'] ?>"></td>
                         </tr>
                     <?php endforeach; ?>
 

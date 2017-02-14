@@ -26,7 +26,7 @@
             <header class="w3-container w3-center">
                 <h1>Sistema de Información y Monitoreo</h1>
             </header>
-            <div class="w3-container">
+            <div class="w3-container" >
                 <div class="w3-row">
                     <div class="w3-col s4 w3-center">
                         <img id="img_cobveg" class="w3-circle" style="cursor:pointer" src="<?php echo base_url() ?>images/iconos/cobveg.png">
