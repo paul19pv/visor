@@ -24,7 +24,7 @@
             <div class="w3-display-container w3-white">
                 <div class="contenedor-arbol">
                     <ul>
-                        <li class="first">Pita
+                        <li class="first"><?= $unidad->uni_nombre?>
                             <ul>
                                 <li><?= $sector->sec_nombre ?>
                                     <ul>

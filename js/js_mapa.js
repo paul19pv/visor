@@ -5,35 +5,6 @@ var url_mapas = 'http://localhost:8070/visor/geojson/';
 var url_base = 'http://localhost:8070/visor/';
 //var url_mapas = 'http://infoagua-guayllabamba.ec/visor/geojson/';
 //var url_base = 'http://infoagua-guayllabamba.ec/visor/';
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -0.2, lng: -78.85},
-        //center: {lat: -0.489453, lng: -78.371108},
-        zoom: 11,
-        mapTypeId: google.maps.MapTypeId.HYBRID,
-        mapTypeControlOptions: {
-            mapTypeIds: [
-                google.maps.MapTypeId.ROADMAP,
-                google.maps.MapTypeId.TERRAIN,
-                google.maps.MapTypeId.SATELLITE,
-                google.maps.MapTypeId.HYBRID
-            ],
-            //style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-            position: google.maps.ControlPosition.LEFT_BOTTOM
-        }
-    });
-    //map.data.loadGeoJson(url_mapas + 'paramo/8_act_pla_2012.json');
-   /* map.data.loadGeoJson(url_mapas + 'paramo/8_act_pla_2013.json');
-    map.data.loadGeoJson(url_mapas + 'paramo/8_act_pla_2014.json');
-    map.data.loadGeoJson(url_mapas + 'paramo/8_act_pla_2015.json');
-    map.data.loadGeoJson(url_mapas + 'bf/actual/02_bf_act.json');
-
-    map.data.setStyle(estilo);
-    //map.data.addListener('addfeature', info_ambito);
-    map.data.addListener('mouseover', info_map);
-    map.data.addListener('mouseout', hide_info);*/
-    addLayer('fonag01:Ambito_FONAG');
-}
 function estilo(feature) {
     var categoria = feature.getProperty('PRIORIDAD');
     var color = "#006cac";
@@ -81,7 +52,7 @@ function info_ambito(event) {
     infowindow.open(map);
     console.log(unidad, posicion);
 }
-
+/*
 function info_map(event) {
     $("#div_capa").show();
     $("#div_capa").html('');
@@ -110,7 +81,28 @@ function info_map(event) {
 function hide_info(event) {
     $("#div_capa").hide();
     $("#div_capa").html('');
-}
+}*/
 function prueba() {
     map.data.loadGeoJson(url_mapas + 'paramo/8_act_pla_2012.json');
 }
+
+$(function(){
+    $( "#img_zoom" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      },
+      resizable: false,
+      height: 370,
+      width: 450,
+    });
+ 
+    $( "#btn_imagen" ).on( "click", function() {
+      $( "#img_zoom" ).dialog( "open" );
+    });
+})

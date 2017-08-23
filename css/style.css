@@ -1,6 +1,6 @@
 
 p{
-    text-align: justify;
+    /*text-align: justify;*/
     font-size: 12px;
 
 }
@@ -63,18 +63,19 @@ form{
 
 .contenedor-arbol ul {
     list-style: none;
+    padding-left:20px;
 }
 
 .contenedor-arbol li::before, .contenedor-arbol li::after {
     content: "";
     position: absolute;
-    left: -12px;
+    left: -16px;
 }
 
 .contenedor-arbol li::before {
     /*border-top: 2px solid green;*/
     border-top: 2px solid white;
-    top: 9px;
+    top: 8px;
     width: 8px;
     height: 0;
 }

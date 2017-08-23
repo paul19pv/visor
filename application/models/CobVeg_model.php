@@ -20,6 +20,17 @@ class CobVeg_model extends CI_Model {
         //var_dump($this->db->last_query());
         return $query->row_array();
     }
+    //obtener datos de unidad hídrica por el sector
+    public function get_unidad_sector($sec_id){
+        $this->db->where('sec_id',$sec_id);
+        $query = $this->db->get('sector');
+        $sector=$query->row();
+        $this->db->where('uni_id',$sector->sec_unidad);
+        $query2 = $this->db->get('unidad');
+        //var_dump($this->db->last_query());
+        return $query2->row();
+        
+    }
     public function get_sectores($sec_unidad) {
         $this->db->order_by('sec_id', 'ASC');
         $this->db->where('sec_unidad',$sec_unidad);

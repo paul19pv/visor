@@ -1,4 +1,4 @@
-var velocidad = 0;
+var velocidad = 5000;
 var indicecapa = 0;
 var var_timer;
 var capa_actual = '';
@@ -6,12 +6,18 @@ var capa_actual = '';
 var lista_coberturas = [];
 var listado_capas = [];
 
+/*var map;
+var url_mapas = 'http://localhost:8070/visor/geojson/';
+var url_base = 'http://localhost:8070/visor/';
+*/
 $( window ).on( "load", function() {
+    initMap();
     load_geojson();
     $("#div_leyenda").hide();
     $("#tab_seguimiento").tabs();
-    $("input[name=velocidad]").click(function () {
-        velocidad = $(this).val();
+    $("#velocidad").click(function () {
+        velocidad = $(this).val()*100;
+        console.log(velocidad)
     });
     $("#btn_animacion").click(function () {
         if (listado_capas.length > 1 && velocidad > 0) {
@@ -27,42 +33,46 @@ $( window ).on( "load", function() {
     //habilitar/deshabilitar checks precipitacion
     $("#chk_periodos").click(conmutar_periodos);
     $('#div_periodos input').click(precipitacion);
+    $("#zoom_01").elevateZoom();
 });
+//funcion para cargar el mapa inicial
+function initMap() {
+    var latitud=$("#sec_latitud").val();
+    var longitud=$("#sec_longitud").val();
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: parseFloat(latitud), lng: parseFloat(longitud)},
+        zoom: 13,
+        mapTypeId: google.maps.MapTypeId.HYBRID,
+        mapTypeControlOptions: {
+            mapTypeIds: [
+                google.maps.MapTypeId.ROADMAP,
+                google.maps.MapTypeId.TERRAIN,
+                google.maps.MapTypeId.SATELLITE,
+                google.maps.MapTypeId.HYBRID
+            ],
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+            position: google.maps.ControlPosition.LEFT_TOP
+        }
+    });
+    addLayer('fonag01:Ambito_FONAG');
+}
+//cargar capas por sector
 function load_geojson() {
-
-    //centrar_mapa();
     get_coberturas_sector();
-    //alert("algo");
     for (var i = 0; i < lista_coberturas.length; i++) {
         map.data.loadGeoJson(url_mapas + lista_coberturas[i].layer);
-        //console.log(lista_coberturas[i].layer);
     }
     map.data.setStyle(style_bf);
-    map.data.addListener('mouseover', info_map);
-    map.data.addListener('mouseout', hide_info);
-    //console.log(google.maps.Data.Feature.getProperty('CODIGO'));
+    map.data.addListener('click', info_map);
+    //map.data.addListener('mouseout', hide_info);
+}
 
-}
-//centrar el mapa de acuerdo a la unidad hídrica seleccionada
-function centrar_mapa() {
-    var unidad = $("#txt_unidad").val();
-    var latitud = parseFloat($("#lat" + unidad).val()), longitud = parseFloat($("#lon" + unidad).val());
-    //console.log(unidad);
-    addLayer('fonag01:Ambito_FONAG');
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: latitud, lng: longitud},
-        zoom: 11,
-        mapTypeId: google.maps.MapTypeId.TERRAIN
-    });
-}
 //cargar las coberturas de la base de datos y asignar a la variable lista_coberturas
 function get_coberturas_sector() {
-    //alert("algo");
     lista_coberturas = [];
     var sector = $("#txt_sector").val();
     var fase = $("#txt_fase").val();
     var ecosistema = $("#txt_ecosistema").val();
-    console.log(sector, fase, ecosistema);
     if (sector !== undefined && fase !== undefined) {
         var capas = $.ajax({
             url: "/visor/CobVeg/get_coberturas_sector/" + sector + "/" + fase + "/" + ecosistema,
@@ -78,15 +88,12 @@ function get_coberturas_sector() {
 
 }
 function style_bf(feature) {
-    //var categoria = feature.getProperty('PRIORIDAD');
     var capa = feature.getProperty('CAPA');
     var ecosistema = feature.getProperty('ECOSISTEMA').toLowerCase()==='paramo'?'paramo':'bosque';
-    console.log("valores",capa,ecosistema);
     var color = "#FF8C00";
     var show_layer = false;
     var limite = listado_capas.length;
     for (var i = 0; i < limite; i++) {
-        console.log("capa",listado_capas[i].nombre,listado_capas[i].ecosistema)
         if (capa === listado_capas[i].nombre && ecosistema===listado_capas[i].ecosistema) {
             show_layer = true;
         }
@@ -101,7 +108,6 @@ function style_bf(feature) {
 
 }
 function animacion(feature) {
-    //var categoria = feature.getProperty('PRIORIDAD');
     var capa = feature.getProperty('CAPA');
     var color = "#FF8C00";
     var show_layer = false;
@@ -128,10 +134,7 @@ function iniciarAnimacion() {
     map.data.setStyle(animacion);
     console.log("capa agregada ini", capa_actual);
     indicecapa = 1;
-    //info_cobertura(listado_capas[0]);
-
     var_timer = setInterval(activar_cobertura, velocidad);
-
 }
 function detenerAnimacion() {
     $("input.w3-check").prop("disabled", false);
@@ -144,7 +147,6 @@ function detenerAnimacion() {
     capa_actual = '';
     eliminar_coberturas();
     map.data.setStyle(animacion);
-    //kml_layer.hideDocument(kml_layer.docs[indice_actual()]);
 }
 function precipitacion() {
     if ($(this).is(":checked"))
@@ -254,8 +256,8 @@ function conmutar_periodos() {
 function info_map(event) {
     var capa = event.feature;
     $("#div_capa").show();
-    $("#div_capa").html('');
-    $("#div_capa").append('<p><b>Área: </b>' + parseFloat(capa.getProperty('AREA_REG')).toFixed(2) + ' ha</p>');
+    //$("#div_capa").html('');
+    /*$("#div_capa").append('<p><b>Área: </b>' + parseFloat(capa.getProperty('AREA_REG')).toFixed(2) + ' ha</p>');
     $("#div_capa").append('<p><b>Popietario: </b>' + capa.getProperty('PROPIETARI') + '</p>');
     $("#div_capa").append('<p><b>Ecosistema: </b>' + capa.getProperty('ECOSISTEMA') + '</p>');
     $("#div_capa").append('<p><b>Estrategia: </b>' + capa.getProperty('T_RECUPERA') + '</p>');
@@ -263,9 +265,20 @@ function info_map(event) {
     $("#div_capa").append('<p><b>Unidad Hídrica: </b>' + capa.getProperty('U_HIDRICA') + '</p>');
     $("#div_capa").append('<p><b>Sector: </b>' + capa.getProperty('SECTOR') + '</p>');
     $("#div_capa").append('<p><b>Año: </b>' + parseFloat(capa.getProperty('ANIO')).toFixed(0) + '</p>');
-    $("#div_capa").append('<p><b>Especies: </b>' + capa.getProperty('ESPECIES') + '</p>');
-    $("#div_capa").append('<div class="w3-container w3-padding-4"><img class="w3-border w3-padding" src="' + url_base + 'images/planta.JPG" width="100px"></div>');
-}
+    $("#div_capa").append('<p><b>Especies: </b>' + capa.getProperty('ESPECIES') + '</p>');*/
+    //$("#div_capa").append('<div class="w3-container w3-padding-4"><img id="zoom_01" class="w3-border" src="' + url_base + 'images/planta.JPG" data-zoom-image="' + url_base + 'images/planta_large.JPG" width="100px"></div>');
+    
+    $("#area").append('<p class="w3-margin-0">'+parseFloat(capa.getProperty('AREA_REG')).toFixed(2) + ' ha</p>');
+    $("#propietario").append('<p class="w3-margin-0">' + capa.getProperty('PROPIETARI') + '</p>');
+    $("#ecosistema").append('<p class="w3-margin-0">' + capa.getProperty('ECOSISTEMA') + '</p>');
+    $("#estrategia").append('<p class="w3-margin-0">' + capa.getProperty('T_RECUPERA') + '</p>');
+    $("#actividad").append('<p class="w3-margin-0">' + capa.getProperty('FASE_RECUP') + '</p>');
+    $("#unidad").append('<p class="w3-margin-0">' + capa.getProperty('U_HIDRICA') + '</p>');
+    $("#sector").append('<p class="w3-margin-0">' + capa.getProperty('SECTOR') + '</p>');
+    $("#anio").append('<p class="w3-margin-0">' + parseFloat(capa.getProperty('ANIO')).toFixed(0) + '</p>');
+    $("#especies").append('<p class="w3-margin-0">' + capa.getProperty('ESPECIES') + '</p>');
+}   
+
 function hide_info(event) {
     $("#div_capa").hide();
     $("#div_capa").html('');
@@ -283,7 +296,7 @@ function info_cobertura(capa) {
     $("#div_info").append('<p><b>Sector: </b>' + capa.getProperty('SECTOR') + '</p>');
     $("#div_info").append('<p><b>Año: </b>' + parseFloat(capa.getProperty('ANIO')).toFixed(0) + '</p>');
     $("#div_info").append('<p><b>Especies: </b>' + capa.getProperty('ESPECIES') + '</p>');
-    $("#div_info").append('<div class="w3-container w3-padding-4"><img class="w3-border w3-padding" src="' + url_base + 'images/planta.JPG" width="100px"></div>');
+    $("#div_info").append('<div class="w3-container w3-padding-4"><img id="zoom_01" class="w3-border" src="' + url_base + 'images/planta.JPG" data-zoom-image="' + url_base + 'images/planta_large.JPG" width="100px"></div>');
 }
 function leyenda() {
     //console.log("leyenda");
