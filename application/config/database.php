@@ -76,7 +76,11 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
+<<<<<<< HEAD
 	'username' => 'postgres',
+=======
+	'username' => 'usr_visor',
+>>>>>>> d0a6859f1ef8b7109fa3ed399f31b760f3406e20
 	'password' => 'dev123*',
 	'database' => 'visor',
 	'dbdriver' => 'postgre',

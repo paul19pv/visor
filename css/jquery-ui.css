@@ -851,7 +851,11 @@ button.ui-button::-moz-focus-inner {
 .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
 	float: left;
 	/*padding: .5em 1em;*/
+<<<<<<< HEAD
         padding: 0px 10px;
+=======
+        padding: 2px 10px;
+>>>>>>> d0a6859f1ef8b7109fa3ed399f31b760f3406e20
 	text-decoration: none;
 }
 .ui-tabs .ui-tabs-nav li.ui-tabs-active {
@@ -869,8 +873,12 @@ button.ui-button::-moz-focus-inner {
 .ui-tabs .ui-tabs-panel {
 	display: block;
 	border-width: 0;
+<<<<<<< HEAD
 	/*padding: 1em 1.4em;*/
         padding: 1em;
+=======
+	padding: 1em 1.4em;
+>>>>>>> d0a6859f1ef8b7109fa3ed399f31b760f3406e20
 	background: none;
 }
 .ui-tooltip {

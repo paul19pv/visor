@@ -1,5 +1,6 @@
 <script>
     $(function () {
+<<<<<<< HEAD
         $(".sectores").click(function () {
             sec_id = $(this).attr('id');
             $("#tabs").tabs("option", "disabled", []);
@@ -15,6 +16,20 @@
             url: "/visor/CobVeg/view_paramo/" + sec_id,
             type: "GET",
             //data: "sec_id=" + sec_id,
+=======
+        $(".unidades.sectores").click(function () {
+            $("#tabs").tabs("option", "active", 3);
+            var id = $(this).attr('id');
+            paramo(id);
+        });
+    });
+    
+    function paramo(sec_id) {
+        $.ajax({
+            url: "/visor/CobVeg/view_paramo",
+            type: "POST",
+            data: "sec_id=" + sec_id,
+>>>>>>> d0a6859f1ef8b7109fa3ed399f31b760f3406e20
             async: false,
             success: function (datos) {
                 $("#tabs-4").html(datos);
@@ -22,6 +37,7 @@
         });
         return false;
     }
+<<<<<<< HEAD
     function bosque(sec_id) {
         $.ajax({
             url: "/visor/CobVeg/view_bosque/" + sec_id,
@@ -80,4 +96,28 @@
     }
     ?>
 
+=======
+</script>
+    
+<div id="sectores">
+    <div class="encabezado">
+        <img src="<?php echo base_url() . "images/cobertura/unidades/" . $encabezado['uni_imagen'] ?>" />
+        <div>
+            <h3><?php echo $encabezado['uni_nombre'] ?></h3>
+            <p><?php echo $encabezado['uni_texto'] ?></p>
+        </div>
+    </div>
+    <p class="indicador">Por favor seleccione el sector de estudio para acceder a la información disponible:</p>
+    <div>
+        <?php foreach ($sectores as $row): ?>
+            <div id="<?php echo $row->sec_id?>" class="unidades sectores">
+                <img src="<?php echo base_url()."images/cobertura/sectores/".$row->sec_imagen ?>" />
+                <div>
+                    <h4><?php echo $row->sec_nombre?></h4>
+                    <p><?php echo $row->sec_texto ?></p>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+>>>>>>> d0a6859f1ef8b7109fa3ed399f31b760f3406e20
 </div>

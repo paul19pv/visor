@@ -23,8 +23,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+<<<<<<< HEAD
 //$config['base_url'] = 'http://localhost:8070/visor';
 $config['base_url'] = 'http://infoagua-guayllabamba.ec/visor';
+=======
+$config['base_url'] = 'http://localhost:8888/visor';
+>>>>>>> d0a6859f1ef8b7109fa3ed399f31b760f3406e20
 
 /*
 |--------------------------------------------------------------------------

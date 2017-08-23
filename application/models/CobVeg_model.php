@@ -7,6 +7,7 @@ class CobVeg_model extends CI_Model {
     function __construct() {
         parent::__construct();
     }
+<<<<<<< HEAD
     public function get_unidades() {
         $this->db->order_by('uni_id', 'ASC');
         $this->db->where('uni_cuenca !=','Sin cuenca');
@@ -14,6 +15,9 @@ class CobVeg_model extends CI_Model {
         //var_dump($this->db->last_query());
         return $query->result();
     }
+=======
+    
+>>>>>>> d0a6859f1ef8b7109fa3ed399f31b760f3406e20
     public function get_unidad($uni_id) {
         $this->db->where('uni_id',$uni_id);
         $query = $this->db->get('unidad');
@@ -21,7 +25,10 @@ class CobVeg_model extends CI_Model {
         return $query->row_array();
     }
     public function get_sectores($sec_unidad) {
+<<<<<<< HEAD
         $this->db->order_by('sec_id', 'ASC');
+=======
+>>>>>>> d0a6859f1ef8b7109fa3ed399f31b760f3406e20
         $this->db->where('sec_unidad',$sec_unidad);
         $query = $this->db->get('sector');
         //var_dump($this->db->last_query());
@@ -31,6 +38,7 @@ class CobVeg_model extends CI_Model {
         $this->db->where('sec_id',$sec_id);
         $query = $this->db->get('sector');
         //var_dump($this->db->last_query());
+<<<<<<< HEAD
         return $query->row();     
     }
     public function get_plantacion($sec_id,$ecosistema) {
@@ -100,5 +108,16 @@ class CobVeg_model extends CI_Model {
         $query= $this->db->get('view_modelo');
         return $query->result_array();
     }
+=======
+        return $query->row();
+        
+    }
+    public function get_plantacion($sec_id) {
+        $this->db->where('rec_sector',$sec_id);
+        $query = $this->db->get('view_plantacion');
+        //var_dump($this->db->last_query());
+        return $query->row();
+    }
+>>>>>>> d0a6859f1ef8b7109fa3ed399f31b760f3406e20
 
 }

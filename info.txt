@@ -1,0 +1,31 @@
+Automezclado js/js_wms.js
+CONFLICTO(añadir/añadir): conflicto de fusión en js/js_wms.js
+Automezclado js/js_mapa.js
+CONFLICTO(añadir/añadir): conflicto de fusión en js/js_mapa.js
+Automezclado css/style.css
+CONFLICTO(añadir/añadir): conflicto de fusión en css/style.css
+Automezclado css/jquery-ui.css
+CONFLICTO(añadir/añadir): conflicto de fusión en css/jquery-ui.css
+Automezclado application/views/sitio/content.php
+CONFLICTO(añadir/añadir): conflicto de fusión en application/views/sitio/content.php
+Automezclado application/views/shared/template.php
+CONFLICTO(añadir/añadir): conflicto de fusión en application/views/shared/template.php
+Automezclado application/views/cobveg/unidades.php
+CONFLICTO(añadir/añadir): conflicto de fusión en application/views/cobveg/unidades.php
+Automezclado application/views/cobveg/sectores.php
+CONFLICTO(añadir/añadir): conflicto de fusión en application/views/cobveg/sectores.php
+Automezclado application/views/cobveg/paramo.php
+CONFLICTO(añadir/añadir): conflicto de fusión en application/views/cobveg/paramo.php
+Automezclado application/models/CobVeg_model.php
+CONFLICTO(añadir/añadir): conflicto de fusión en application/models/CobVeg_model.php
+Automezclado application/controllers/Sitio.php
+CONFLICTO(añadir/añadir): conflicto de fusión en application/controllers/Sitio.php
+Automezclado application/controllers/CobVeg.php
+CONFLICTO(añadir/añadir): conflicto de fusión en application/controllers/CobVeg.php
+Automezclado application/config/routes.php
+CONFLICTO(añadir/añadir): conflicto de fusión en application/config/routes.php
+Automezclado application/config/database.php
+CONFLICTO(añadir/añadir): conflicto de fusión en application/config/database.php
+Automezclado application/config/config.php
+CONFLICTO(añadir/añadir): conflicto de fusión en application/config/config.php
+Automezclado .htaccess

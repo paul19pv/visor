@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 <script>
     $(function () {
         $(".unidades").click(function () {
@@ -51,3 +52,6 @@
         </div>
     <?php endforeach; ?>
 </div>
+=======
+
+>>>>>>> d0a6859f1ef8b7109fa3ed399f31b760f3406e20

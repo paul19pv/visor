@@ -1,13 +1,19 @@
 <?php
+<<<<<<< HEAD
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CobVeg extends CI_Controller {
 
+=======
+defined('BASEPATH') OR exit('No direct script access allowed');
+class CobVeg extends CI_Controller{
+>>>>>>> d0a6859f1ef8b7109fa3ed399f31b760f3406e20
     public function __construct() {
         parent::__construct();
         $this->load->model('CobVeg_model', 'cobveg');
     }
+<<<<<<< HEAD
 
     public function index() {
         //$data_sim['necesidad']=$this->load->view('cobveg/simulacion/necesidad.php','',TRUE);
@@ -233,3 +239,19 @@ class CobVeg extends CI_Controller {
     }
 
 }
+=======
+    
+    public function view_sectores() {
+        $uni_id= $this->input->post('id');
+        $data['encabezado']=$this->cobveg->get_unidad($uni_id);
+        $data['sectores']= $this->cobveg->get_sectores($uni_id);
+        $this->load->view('cobveg/sectores.php',$data);
+    }
+    public function view_paramo() {
+        $sec_id=$this->input->post('sec_id');
+        $data['sector']=$this->cobveg->get_sector($sec_id);
+        $data['plantacion']= $this->cobveg->get_plantacion($sec_id);
+        $this->load->view('cobveg/paramo.php',$data);
+    }
+}
+>>>>>>> d0a6859f1ef8b7109fa3ed399f31b760f3406e20
