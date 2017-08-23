@@ -1,0 +1,113 @@
+/**/
+#tabs{
+    min-width:  800px;
+    min-height: 480px;
+}
+#tabs #title{
+    background-color: #266891;
+    color: #ffffff;
+    height: 42px;
+}
+#tabs #title img{
+    margin:5px 10px;
+}
+#tabs #title p{
+    font-size: 18px;
+    font-weight: bold;
+}
+#tabs img{
+    float:left;
+    margin-right: 10px;
+}
+#tabs a{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+table{
+    border-collapse: collapse;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 90%;
+}
+table th {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 12px;
+}
+table th, td{
+    text-align: center;
+    border: 1px solid black;
+}
+table td{
+    font-size: 12px;
+    vertical-align: middle;
+    padding: 0 5px;
+}
+.div_tabla{
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+/*formularios*/
+form{
+    font-size: 12px;
+    margin-top: 10px;
+    
+}
+label{
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    max-width: 100%;
+    /*min-height: 1px;*/
+    padding-left: 10px;
+    padding-top: 4px;
+    padding-right: 10px;
+    position: relative;
+    float: left;
+}
+textarea{
+    font-size: 12px;
+}
+.checkbox{
+    min-height: 29px;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-top: 9px;
+}
+.checkbox label {
+    cursor: pointer;
+    font-weight: normal;
+    margin-bottom: 0;
+    min-height: 20px;
+    padding-left: 20px;
+    font-size: 12px;
+}
+input[type="checkbox"] {
+    margin-left: -20px;
+    position: absolute;
+    line-height: normal;
+    font-size: 12px;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 2px 4px;
+  /*font-size: 10px;*/
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form-group{
+    margin-bottom: 10px;
+    overflow: hidden;
+}
