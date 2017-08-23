@@ -8,6 +8,17 @@ class CobVeg extends CI_Controller {
         parent::__construct();
         $this->load->model('CobVeg_model', 'cobveg');
     }
+    //pagina principal para el portal
+    public function navegacion($sec_id,$ecosistema,$fase){
+        $data['mapa']=$this->load->view('sitio/mapa','',TRUE);
+        $data['sector'] = $this->cobveg->get_sector($sec_id);
+        $seguimiento['fase'] = $fase;
+        $seguimiento['sector'] = $sec_id;
+        $seguimiento['ecosistema']=$ecosistema;
+        $seguimiento['datos'] = $this->cobveg->get_coberturas_sector($sec_id, $fase,$ecosistema);
+        $data['seguimiento'] = $this->load->view('cobveg/componentes/seguimiento', $seguimiento, TRUE);
+        $this->load->view('cobveg/index.php', $data);
+    }
 
     public function index() {
         //$data_sim['necesidad']=$this->load->view('cobveg/simulacion/necesidad.php','',TRUE);
@@ -179,7 +190,7 @@ class CobVeg extends CI_Controller {
         }
         return $texto;
     }
-
+    //textos para ecosistemas y fases
     public function get_txt_act($ecosistema) {
         switch ($ecosistema) {
             case 'paramo':

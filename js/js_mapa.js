@@ -22,8 +22,8 @@ function initMap() {
             position: google.maps.ControlPosition.LEFT_BOTTOM
         }
     });
-    /*map.data.loadGeoJson(url_mapas + 'paramo/8_act_pla_2012.json');
-    map.data.loadGeoJson(url_mapas + 'paramo/8_act_pla_2013.json');
+    //map.data.loadGeoJson(url_mapas + 'paramo/8_act_pla_2012.json');
+   /* map.data.loadGeoJson(url_mapas + 'paramo/8_act_pla_2013.json');
     map.data.loadGeoJson(url_mapas + 'paramo/8_act_pla_2014.json');
     map.data.loadGeoJson(url_mapas + 'paramo/8_act_pla_2015.json');
     map.data.loadGeoJson(url_mapas + 'bf/actual/02_bf_act.json');
@@ -111,6 +111,6 @@ function hide_info(event) {
     $("#div_capa").hide();
     $("#div_capa").html('');
 }
-
-
-
+function prueba() {
+    map.data.loadGeoJson(url_mapas + 'paramo/8_act_pla_2012.json');
+}

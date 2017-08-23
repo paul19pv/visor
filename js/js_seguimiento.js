@@ -6,7 +6,7 @@ var capa_actual = '';
 var lista_coberturas = [];
 var listado_capas = [];
 
-$(function () {
+$( window ).on( "load", function() {
     load_geojson();
     $("#div_leyenda").hide();
     $("#tab_seguimiento").tabs();
@@ -255,11 +255,11 @@ function info_map(event) {
     var capa = event.feature;
     $("#div_capa").show();
     $("#div_capa").html('');
-    $("#div_capa").append('<p><b>Área: </b>' + parseFloat(capa.getProperty('AREA_REG')).toFixed(2) + '</p>');
+    $("#div_capa").append('<p><b>Área: </b>' + parseFloat(capa.getProperty('AREA_REG')).toFixed(2) + ' ha</p>');
     $("#div_capa").append('<p><b>Popietario: </b>' + capa.getProperty('PROPIETARI') + '</p>');
     $("#div_capa").append('<p><b>Ecosistema: </b>' + capa.getProperty('ECOSISTEMA') + '</p>');
-    $("#div_capa").append('<p><b>Tipo Recuperación: </b>' + capa.getProperty('T_RECUPERA') + '</p>');
-    $("#div_capa").append('<p><b>Fase Recuperación: </b>' + capa.getProperty('FASE_RECUP') + '</p>');
+    $("#div_capa").append('<p><b>Estrategia: </b>' + capa.getProperty('T_RECUPERA') + '</p>');
+    $("#div_capa").append('<p><b>Actividad: </b>' + capa.getProperty('FASE_RECUP') + '</p>');
     $("#div_capa").append('<p><b>Unidad Hídrica: </b>' + capa.getProperty('U_HIDRICA') + '</p>');
     $("#div_capa").append('<p><b>Sector: </b>' + capa.getProperty('SECTOR') + '</p>');
     $("#div_capa").append('<p><b>Año: </b>' + parseFloat(capa.getProperty('ANIO')).toFixed(0) + '</p>');
@@ -274,7 +274,7 @@ function info_cobertura(capa) {
     //$("#div_info").html("<p>" + "<b>Periodo: </b>" + capa.periodo + "</p>");
     //$("#div_info").show();
     $("#div_info").html('');
-    $("#div_info").append('<p><b>Área: </b>' + parseFloat(capa.getProperty('AREA_REG')).toFixed(2) + '</p>');
+    $("#div_info").append('<p><b>Área: </b>' + parseFloat(capa.getProperty('AREA_REG')).toFixed(2) + ' ha</p>');
     $("#div_info").append('<p><b>Popietario: </b>' + capa.getProperty('PROPIETARI') + '</p>');
     $("#div_info").append('<p><b>Ecosistema: </b>' + capa.getProperty('ECOSISTEMA') + '</p>');
     $("#div_info").append('<p><b>Estrategia Recuperación: </b>' + capa.getProperty('T_RECUPERA') + '</p>');

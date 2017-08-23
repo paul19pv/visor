@@ -89,7 +89,7 @@
     });
 
 </script>
-<div id="tabs" style="min-width:  800px;min-height: 480px;">
+<div id="tabs" style="min-width:800px;min-height:480px;">
     <div class="w3-display-container w3-blue" style="height:50px;">
         <img class="w3-padding w3-left" src="<?php echo base_url() ?>images/cobertura/icono.png"  />
         <h4 class="w3-left">Cobertura Vegetal</h4>

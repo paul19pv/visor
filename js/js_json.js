@@ -291,7 +291,7 @@ function info_map(event) {
     $("#div_capa").show();
     $("#div_capa").html('');
     $("#div_capa").append('<p><b>Prioridad: </b>' + capa.getProperty('PRIORIDAD') + '</p>');
-    $("#div_capa").append('<p><b>Area: </b>' + capa.getProperty('Area_ha') + '</p>');
+    $("#div_capa").append('<p><b>Area: </b>' +parseFloat(capa.getProperty('Area_ha')).toFixed(2) + ' ha</p>');
     $("#div_capa").append('<p><b>Vegetación: </b>' + capa.getProperty('CLASE') + '</p>');
 }
 function hide_info(event) {

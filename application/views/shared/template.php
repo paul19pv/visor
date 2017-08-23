@@ -24,7 +24,8 @@
         <!-- Menu Principal-->
         <div id="div_menu" class="w3-card-4 w3-col s5 w3-display-middle w3-blue w3-round-large">
             <header class="w3-container w3-center">
-                <h1>Sistema de Información y Monitoreo</h1>
+                <h1>SIAF</h1><h3>Sistema de Información de las Actividades del FONAG</h3>
+                <br>
             </header>
             <div class="w3-container" >
                 <div class="w3-row">

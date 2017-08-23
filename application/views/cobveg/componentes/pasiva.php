@@ -17,14 +17,16 @@
     <div id="tab_pasiva-1">
         <div class="w3-container">
             <img src="<?php echo base_url() ?>images/cobertura/pasiva.png" class="w3-left w3-margin-right" />
-            <p class="w3-container"><?php echo $txt_sin ?></p>
+            <p>
+                <?php echo $txt_sin ?>
+            </p>
         </div>
     </div>
     <!--Cercado-->
     <div id="tab_pasiva-2">
 
         <p class="w3-container w3-light-grey w3-round w3-padding-4">
-            <?php $txt_cer; ?>
+            <?php echo $txt_cer; ?>
         </p>
         <?php echo $tbl_cercado ?>
         <p class="w3-text-green w3-padding-8"><strong> El estado de recuperación del sector seleccionado es el siguiente:</strong></p>
